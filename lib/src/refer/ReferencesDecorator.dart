@@ -1,153 +1,137 @@
-// /** @module refer */
-// import { IReferences } from 'pip-services3-commons-node';
+import 'package:pip_services3_commons/pip_services3_commons.dart';
 
-// /**
-//  * Chainable decorator for IReferences that allows to inject additional capabilities
-//  * such as automatic component creation, automatic registration and opening.
-//  * 
-//  * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
-//  */
-// export class ReferencesDecorator implements IReferences {
-	
-// 	/**
-// 	 * Creates a new instance of the decorator.
-// 	 * 
-// 	 * @param nextReferences 		the next references or decorator in the chain.
-// 	 * @param topReferences 		the decorator at the top of the chain.
-// 	 */
-// 	public constructor(nextReferences: IReferences, topReferences: IReferences) {
-//         this.nextReferences = nextReferences != null ? nextReferences : topReferences;
-//         this.topReferences = topReferences != null ? topReferences : nextReferences;
-//     }
+/// Chainable decorator for IReferences that allows to inject additional capabilities
+/// such as automatic component creation, automatic registration and opening.
+///
+/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
 
-// 	/**
-// 	 * The next references or decorator in the chain.
-// 	 */
-// 	public nextReferences: IReferences;
+class ReferencesDecorator implements IReferences {
+  /// Creates a new instance of the decorator.
+  ///
+  /// - nextReferences 		the next references or decorator in the chain.
+  /// - topReferences 		the decorator at the top of the chain.
 
-// 	/**
-// 	 * The decorator at the top of the chain.
-// 	 */
-// 	public topReferences: IReferences;
+  ReferencesDecorator(IReferences nextReferences, IReferences topReferences) {
+    this.nextReferences = nextReferences ?? topReferences;
+    this.topReferences = topReferences ?? nextReferences;
+  }
 
-// 	/**
-// 	 * Puts a new reference into this reference map.
-// 	 * 
-// 	 * @param locator 	a locator to find the reference by.
-// 	 * @param component a component reference to be added.
-// 	 */
-// 	public put(locator: any, component: any): any {
-// 		return this.nextReferences.put(locator, component);
-// 	}
-	
-// 	/**
-// 	 * Removes a previously added reference that matches specified locator.
-// 	 * If many references match the locator, it removes only the first one.
-// 	 * When all references shall be removed, use [[removeAll]] method instead.
-// 	 * 
-// 	 * @param locator 	a locator to remove reference
-// 	 * @returns the removed component reference.
-// 	 * 
-// 	 * @see [[removeAll]]
-// 	 */
-// 	public remove(locator: any): any {
-// 		return this.nextReferences.remove(locator);
-// 	}
+  /// The next references or decorator in the chain.
+  IReferences nextReferences;
 
-// 	/**
-// 	 * Removes all component references that match the specified locator. 
-// 	 * 
-// 	 * @param locator 	the locator to remove references by.
-// 	 * @returns a list, containing all removed references.
-// 	 */
-// 	public removeAll(locator: any): any[] {
-// 		return this.nextReferences.removeAll(locator);
-// 	}
+  /// The decorator at the top of the chain.
+  IReferences topReferences;
 
-// 	/**
-// 	 * Gets locators for all registered component references in this reference map.
-// 	 * 
-// 	 * @returns a list with component locators.
-// 	 */
-//     public getAllLocators(): any[] {
-// 		return this.nextReferences.getAllLocators();
-// 	}
+  /// Puts a new reference into this reference map.
+  ///
+  /// - [locator] 	a locator to find the reference by.
+  /// - [component] a component reference to be added.
+  @override
+  dynamic put(locator, component) {
+    return nextReferences.put(locator, component);
+  }
 
-// 	/**
-// 	 * Gets all component references registered in this reference map.
-// 	 * 	
-// 	 * @returns a list with component references.
-// 	 */
-// 	public getAll(): any[] {
-// 		return this.nextReferences.getAll();
-// 	}
-		
-// 	/**
-// 	 * Gets an optional component reference that matches specified locator.
-// 	 * 
-// 	 * @param locator 	the locator to find references by.	 
-// 	 * @returns a matching component reference or null if nothing was found.
-// 	 */
-//     public getOneOptional<T>(locator: any): T {
-//     	try {
-// 	        let components = this.find<T>(locator, false);
-//             return components.length > 0 ? components[0] : null;
-//     	} catch (ex) {
-//     		return null;
-//     	}
-//     }
+  /// Removes a previously added reference that matches specified locator.
+  /// If many references match the locator, it removes only the first one.
+  /// When all references shall be removed, use [[removeAll]] method instead.
+  ///
+  /// - [locator] 	a locator to remove reference
+  /// Returns the removed component reference.
+  ///
+  /// See [[removeAll]]
 
-// 	/**
-// 	 * Gets a required component reference that matches specified locator.
-// 	 * 
-// 	 * @param locator 	the locator to find a reference by.	 
-// 	 * @returns a matching component reference.
-// 	 * @throws a [[ReferenceException]] when no references found.
-// 	 */
-//     public getOneRequired<T>(locator: any): T {
-//         let components = this.find<T>(locator, true);
-//         return components.length > 0 ? components[0] : null;
-//     }
+  @override
+  dynamic remove(locator) {
+    return nextReferences.remove(locator);
+  }
 
-// 	/**
-// 	 * Gets all component references that match specified locator.
-// 	 * 
-// 	 * @param locator 	the locator to find references by.	 
-// 	 * @returns a list with matching component references or empty list if nothing was found.
-// 	 */
-//     public getOptional<T>(locator: any): T[] {
-//     	try {
-//     		return this.find<T>(locator, false);
-//     	} catch (ex) {
-//             return [];
-//     	}
-//     }
+  /// Removes all component references that match the specified locator.
+  ///
+  /// - [locator] 	the locator to remove references by.
+  /// Returns a list, containing all removed references.
 
-// 	/**
-// 	 * Gets all component references that match specified locator.
-// 	 * At least one component reference must be present.
-// 	 * If it doesn't the method throws an error.
-// 	 * 
-// 	 * @param locator 	the locator to find references by.	 
-// 	 * @returns a list with matching component references.
-// 	 * 
-// 	 * @throws a [[ReferenceException]] when no references found.
-// 	 */
-//     public getRequired<T>(locator: any): T[] {
-//         return this.find<T>(locator, true);
-//     }
+  @override
+  List removeAll(locator) {
+    return nextReferences.removeAll(locator);
+  }
 
-// 	/**
-// 	 * Gets all component references that match specified locator.
-// 	 * 
-// 	 * @param locator 	the locator to find a reference by.
-// 	 * @param required 	forces to raise an exception if no reference is found.
-// 	 * @returns a list with matching component references.
-// 	 * 
-// 	 * @throws a [[ReferenceException]] when required is set to true but no references found.
-// 	 */
-// 	public find<T>(locator: any, required: boolean): T[] {
-// 		return this.nextReferences.find<T>(locator, required);
-//     }
+  /// Gets locators for all registered component references in this reference map.
+  ///
+  /// Returns a list with component locators.
+  @override
+  List getAllLocators() {
+    return nextReferences.getAllLocators();
+  }
 
-// }
+  /// Gets all component references registered in this reference map.
+  ///
+  /// Returns a list with component references.
+  @override
+  List getAll() {
+    return nextReferences.getAll();
+  }
+
+  /// Gets an optional component reference that matches specified locator.
+  ///
+  /// - [locator] 	the locator to find references by.
+  /// Returns a matching component reference or null if nothing was found.
+
+  @override
+  T getOneOptional<T>(locator) {
+    try {
+      var components = find<T>(locator, false);
+      return components.length > 0 ? components[0] : null;
+    } catch (ex) {
+      return null;
+    }
+  }
+
+  /// Gets a required component reference that matches specified locator.
+  ///
+  /// - [locator] 	the locator to find a reference by.
+  /// Returns a matching component reference.
+  /// Throws a [[ReferenceException]] when no references found.
+  @override
+  T getOneRequired<T>(locator) {
+    var components = find<T>(locator, true);
+    return components.isNotEmpty ? components[0] : null;
+  }
+
+  /// Gets all component references that match specified locator.
+  ///
+  /// - [locator] 	the locator to find references by.
+  /// Returns a list with matching component references or empty list if nothing was found.
+
+  @override
+  List<T> getOptional<T>(locator) {
+    try {
+      return find<T>(locator, false);
+    } catch (ex) {
+      return [];
+    }
+  }
+
+  /// Gets all component references that match specified locator.
+  /// At least one component reference must be present.
+  /// If it doesn't the method throws an error.
+  ///
+  /// - [locator] 	the locator to find references by.
+  /// Returns a list with matching component references.
+  ///
+  /// Throws a [[ReferenceException]] when no references found.
+  List<T> getRequired<T>(locator) {
+    return find<T>(locator, true);
+  }
+
+  /// Gets all component references that match specified locator.
+  ///
+  /// - [locator] 	the locator to find a reference by.
+  /// - [required] 	forces to raise an exception if no reference is found.
+  /// Returns a list with matching component references.
+  ///
+  /// Throws a [[ReferenceException]] when required is set to true but no references found.
+  @override
+  List<T> find<T>(locator, bool required) {
+    return nextReferences.find<T>(locator, required);
+  }
+}

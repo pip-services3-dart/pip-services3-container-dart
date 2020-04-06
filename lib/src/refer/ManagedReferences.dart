@@ -1,93 +1,79 @@
-// /** @module refer */
-// import { IOpenable } from 'pip-services3-commons-node';
-// import { References } from 'pip-services3-commons-node';
+import 'dart:async';
+import 'package:pip_services3_commons/pip_services3_commons.dart';
 
-// import { ReferencesDecorator } from './ReferencesDecorator';
-// import { BuildReferencesDecorator } from './BuildReferencesDecorator';
-// import { LinkReferencesDecorator } from './LinkReferencesDecorator';
-// import { RunReferencesDecorator } from './RunReferencesDecorator';
+import './ReferencesDecorator.dart';
+import './BuildReferencesDecorator.dart';
+import './LinkReferencesDecorator.dart';
+import './RunReferencesDecorator.dart';
 
-// /**
-//  * Managed references that in addition to keeping and locating references can also 
-//  * manage their lifecycle:
-//  * - Auto-creation of missing component using available factories
-//  * - Auto-linking newly added components
-//  * - Auto-opening newly added components
-//  * - Auto-closing removed components
-//  * 
-//  * @see [[RunReferencesDecorator]]
-//  * @see [[LinkReferencesDecorator]]
-//  * @see [[BuildReferencesDecorator]]
-//  * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/refer.references.html References]] (in the PipServices "Commons" package)
-//  */
-// export class ManagedReferences extends ReferencesDecorator implements IOpenable {
-//     protected _references: References;
-//     protected _builder: BuildReferencesDecorator;
-//     protected _linker: LinkReferencesDecorator;
-//     protected _runner: RunReferencesDecorator;
+/// Managed references that in addition to keeping and locating references can also
+/// manage their lifecycle:
+/// - Auto-creation of missing component using available factories
+/// - Auto-linking newly added components
+/// - Auto-opening newly added components
+/// - Auto-closing removed components
+///
+/// See [[RunReferencesDecorator]]
+/// See [[LinkReferencesDecorator]]
+/// See [[BuildReferencesDecorator]]
+/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/refer.references.html References]] (in the PipServices "Commons" package)
 
-//     /**
-//      * Creates a new instance of the references
-//      * 
-//      * @param tuples    tuples where odd values are component locators (descriptors) and even values are component references
-//      */
-//     public constructor(tuples: any[] = null) {
-//         super(null, null);
+class ManagedReferences extends ReferencesDecorator implements IOpenable {
+  References references;
+  BuildReferencesDecorator builder;
+  LinkReferencesDecorator linker;
+  RunReferencesDecorator runner;
 
-//         this._references = new References(tuples);
-//         this._builder = new BuildReferencesDecorator(this._references, this);
-//         this._linker = new LinkReferencesDecorator(this._builder, this);
-//         this._runner = new RunReferencesDecorator(this._linker, this);
+  /// Creates a new instance of the references
+  ///
+  /// - tuples    tuples where odd values are component locators (descriptors) and even values are component references
 
-//         this.nextReferences = this._runner;
-//     }
+  ManagedReferences(List tuples) : super(null, null) {
+    references = References(tuples);
+    builder = BuildReferencesDecorator(references, this);
+    linker = LinkReferencesDecorator(builder, this);
+    runner = RunReferencesDecorator(linker, this);
 
-//     /** 
-// 	 * Checks if the component is opened.
-// 	 * 
-// 	 * @returns true if the component has been opened and false otherwise.
-//      */
-//     public isOpen(): boolean {
-//         return this._linker.isOpen() && this._runner.isOpen();
-//     }
-    
-//     /**
-// 	 * Opens the component.
-// 	 * 
-// 	 * @param correlationId 	(optional) transaction id to trace execution through call chain.
-//      * @param callback 			callback function that receives error or null no errors occured.
-//      */
-//     public open(correlationId: string, callback?: (err: any) => void): void {
-//         this._linker.open(correlationId, (err) => {
-//             if (err == null)
-//                 this._runner.open(correlationId, callback);
-//             else if (callback) callback(err);
-//         });
-//     }
+    nextReferences = runner;
+  }
 
+  /// Checks if the component is opened.
+  ///
+  /// Returns true if the component has been opened and false otherwise.
+  @override
+  bool isOpen() {
+    return linker.isOpen() && runner.isOpen();
+  }
 
-//     /**
-// 	 * Closes component and frees used resources.
-// 	 * 
-// 	 * @param correlationId 	(optional) transaction id to trace execution through call chain.
-//      * @param callback 			callback function that receives error or null no errors occured.
-//      */
-//     public close(correlationId: string, callback?: (err: any) => void): void {
-//         this._runner.close(correlationId, (err) => {
-//             if (err == null)
-//                 this._linker.close(correlationId, callback);
-//             else if (callback) callback(err);
-//         });
-//     }
+  /// Opens the component.
+  ///
+  /// - [correlationId] 	(optional) transaction id to trace execution through call chain.
+  /// Return  			Future that receives error or null no errors occured.
+  // Throws error
+  @override
+  Future open(String correlationId) async {
+    await linker.open(correlationId);
+    await runner.open(correlationId);
+    return null;
+  }
 
-//     /**
-// 	 * Creates a new ManagedReferences object filled with provided key-value pairs called tuples.
-// 	 * Tuples parameters contain a sequence of locator1, component1, locator2, component2, ... pairs.
-// 	 * 
-// 	 * @param tuples	the tuples to fill a new ManagedReferences object.
-// 	 * @returns			a new ManagedReferences object.
-//      */
-// 	public static fromTuples(...tuples: any[]): ManagedReferences {
-// 		return new ManagedReferences(tuples);
-// 	}
-// }
+  /// Closes component and frees used resources.
+  ///
+  /// - correlationId 	(optional) transaction id to trace execution through call chain.
+  /// Return  			Future that receives null no errors occured.
+  /// Throws error
+  @override
+  Future close(String correlationId) async {
+    await runner.close(correlationId);
+    return linker.close(correlationId);
+  }
+
+  /// Creates a new ManagedReferences object filled with provided key-value pairs called tuples.
+  /// Tuples parameters contain a sequence of locator1, component1, locator2, component2, ... pairs.
+  ///
+  /// - [tuples]	the tuples to fill a new ManagedReferences object.
+  /// Returns			a new ManagedReferences object.
+  static ManagedReferences fromTuples(List tuples) {
+    return ManagedReferences(tuples);
+  }
+}

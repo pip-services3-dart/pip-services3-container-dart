@@ -1,113 +1,101 @@
-// /** @module refer */
-// import { IReferences } from 'pip-services3-commons-node';
-// import { Referencer } from 'pip-services3-commons-node';
-// import { IOpenable } from 'pip-services3-commons-node';
+import 'dart:async';
+import 'package:pip_services3_commons/pip_services3_commons.dart';
+import './ReferencesDecorator.dart';
 
-// import { ReferencesDecorator } from './ReferencesDecorator'
+/// References decorator that automatically sets references to newly added components
+/// that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable interface]] and unsets references from removed components
+/// that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.iunreferenceable.html IUnreferenceable interface]].
 
-// /**
-//  * References decorator that automatically sets references to newly added components
-//  * that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable interface]] and unsets references from removed components
-//  * that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.iunreferenceable.html IUnreferenceable interface]].
-//  */
-// export class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
-//     private _opened: boolean = false;
+class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
+  bool _opened = false;
 
-//     /**
-// 	 * Creates a new instance of the decorator.
-// 	 * 
-// 	 * @param nextReferences 		the next references or decorator in the chain.
-// 	 * @param topReferences 		the decorator at the top of the chain.
-// 	 */
-//     public constructor(nextReferences: IReferences, topReferences: IReferences) {
-//     	super(nextReferences, topReferences);
-//     }
+  /// Creates a new instance of the decorator.
+  ///
+  /// - [nextReferences] 		the next references or decorator in the chain.
+  /// - [topReferences] 		the decorator at the top of the chain.
+  LinkReferencesDecorator(IReferences nextReferences, IReferences topReferences)
+      : super(nextReferences, topReferences);
 
-//     /**
-// 	 * Checks if the component is opened.
-// 	 * 
-// 	 * @returns true if the component has been opened and false otherwise.
-//      */
-//     public isOpen(): boolean {
-//         return this._opened;
-//     }
+  /// Checks if the component is opened.
+  ///
+  /// Returns true if the component has been opened and false otherwise.
+  @override
+  bool isOpen() {
+    return _opened;
+  }
 
-//     /**
-// 	 * Opens the component.
-// 	 * 
-// 	 * @param correlationId 	(optional) transaction id to trace execution through call chain.
-//      * @param callback 			callback function that receives error or null no errors occured.
-//      */
-//     public open(correlationId: string, callback?: (err: any) => void): void {
-//         if (!this._opened) {
-//             this._opened = true;
-//             let components = this.getAll();
-//             Referencer.setReferences(this.topReferences, components);
-//         }
+  /// Opens the component.
+  ///
+  /// - [correlationId] 	(optional) transaction id to trace execution through call chain.
+  /// Return 			Future that receives null no errors occured.
+  /// Throws error
+  @override
+  Future open(String correlationId) async {
+    if (!_opened) {
+      _opened = true;
+      var components = getAll();
+      Referencer.setReferences(topReferences, components);
+    }
+  }
 
-//         if (callback) callback(null);
-//     }
+  /// Closes component and frees used resources.
+  ///
+  /// - [correlationId] 	(optional) transaction id to trace execution through call chain.
+  /// Return 			Future that receives null no errors occured.
+  /// Throws error
+  @override
+  Future close(String correlationId) async {
+    if (_opened) {
+      _opened = false;
+      var components = getAll();
+      Referencer.unsetReferences(components);
+    }
+  }
 
-//     /**
-// 	 * Closes component and frees used resources.
-// 	 * 
-// 	 * @param correlationId 	(optional) transaction id to trace execution through call chain.
-//      * @param callback 			callback function that receives error or null no errors occured.
-//      */
-//     public close(correlationId: string, callback?: (err: any) => void): void {
-//         if (this._opened) {
-//             this._opened = false;
-//             let components = this.getAll();
-//             Referencer.unsetReferences(components);
-//         }
+  /// Puts a new reference into this reference map.
+  ///
+  /// - [locator] 	a locator to find the reference by.
+  /// - component a component reference to be added.
+  @override
+  dynamic put(locator, component) {
+    super.put(locator, component);
 
-//         if (callback) callback(null);
-//     }
+    if (_opened) {
+      Referencer.setReferencesForOne(topReferences, component);
+    }
+  }
 
-//     /**
-// 	 * Puts a new reference into this reference map.
-// 	 * 
-// 	 * @param locator 	a locator to find the reference by.
-// 	 * @param component a component reference to be added.
-// 	 */
-//     public put(locator: any, component: any): any {
-//         super.put(locator, component);
+  /// Removes a previously added reference that matches specified locator.
+  /// If many references match the locator, it removes only the first one.
+  /// When all references shall be removed, use [[removeAll]] method instead.
+  ///
+  /// - [locator] 	a locator to remove reference
+  /// Returns the removed component reference.
+  ///
+  /// See [[removeAll]]
+  @override
+  dynamic remove(locator) {
+    var component = super.remove(locator);
 
-//         if (this._opened)
-//             Referencer.setReferencesForOne(this.topReferences, component);
-//     }
+    if (_opened) {
+      Referencer.unsetReferencesForOne(component);
+    }
 
-//     /**
-// 	 * Removes a previously added reference that matches specified locator.
-// 	 * If many references match the locator, it removes only the first one.
-// 	 * When all references shall be removed, use [[removeAll]] method instead.
-// 	 * 
-// 	 * @param locator 	a locator to remove reference
-// 	 * @returns the removed component reference.
-// 	 * 
-// 	 * @see [[removeAll]]
-// 	 */
-//     public remove(locator: any): any {
-//         let component = super.remove(locator);
+    return component;
+  }
 
-//         if (this._opened)
-//             Referencer.unsetReferencesForOne(component);
+  /// Removes all component references that match the specified locator.
+  ///
+  /// - [locator] 	the locator to remove references by.
+  /// Returns a list, containing all removed references.
+  @override
+  List removeAll(locator) {
+    var components = super.removeAll(locator);
 
-//         return component;
-//     }
+    if (_opened) {
+      Referencer.unsetReferences(components);
+    }
 
-//     /**
-// 	 * Removes all component references that match the specified locator. 
-// 	 * 
-// 	 * @param locator 	the locator to remove references by.
-// 	 * @returns a list, containing all removed references.
-// 	 */
-//     public removeAll(locator: any): any[] {
-//         let components = super.removeAll(locator);
-
-//         if (this._opened)
-//             Referencer.unsetReferences(components);
-
-//         return components;
-//     }
-// }
+    return components;
+  }
+}
