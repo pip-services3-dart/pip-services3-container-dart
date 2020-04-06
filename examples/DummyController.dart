@@ -1,75 +1,74 @@
-// import { IReferenceable } from 'pip-services3-commons-node';
-// import { IReferences } from 'pip-services3-commons-node';
-// import { IReconfigurable } from 'pip-services3-commons-node';
-// import { IOpenable } from 'pip-services3-commons-node';
-// import { INotifiable } from 'pip-services3-commons-node';
-// import { FixedRateTimer } from 'pip-services3-commons-node';
-// import { Parameters } from 'pip-services3-commons-node';
-// import { ConfigParams } from 'pip-services3-commons-node';
-// import { CompositeLogger } from 'pip-services3-components-node';
+import 'dart:async';
+import 'package:pip_services3_commons/pip_services3_commons.dart';
+import 'package:pip_services3_components/pip_services3_components.dart';
 
-// import { ContainerConfig } from '../src/config/ContainerConfig';
+class DummyController
+    implements IReferenceable, IReconfigurable, IOpenable, INotifiable {
+  FixedRateTimer _timer;
+  final _logger = CompositeLogger();
+  var _message = 'Hello World!';
+  var _counter = 0;
 
-// export class DummyController implements IReferenceable, IReconfigurable, IOpenable, INotifiable {
-//     private readonly _timer = new FixedRateTimer(this, 1000, 1000);
-//     private readonly _logger: CompositeLogger = new CompositeLogger();
-//     private _message: string = "Hello World!";
-//     private _counter: number = 0;
+  DummyController() {
+    _timer = FixedRateTimer(this, 1000, 1000);
+  }
 
-//     public constructor() {}
+  String get message {
+    return _message;
+  }
 
-// 	public get message(): string { 
-//         return this._message; 
-//     }
-// 	public set message(value: string) { 
-//         this._message = value; 
-//     }
+  set message(String value) {
+    _message = value;
+  }
 
-// 	public get counter(): number { 
-//         return this._counter; 
-//     }
-// 	public set counter(value: number) { 
-//         this._counter = value; 
-//     }
+  int get counter {
+    return _counter;
+  }
 
-//     public configure(config: ConfigParams): void {
-//         this.message = config.getAsStringWithDefault("message", this.message);
-//     }
+  set counter(int value) {
+    _counter = value;
+  }
 
-//     public setReferences(references: IReferences): void {
-//         this._logger.setReferences(references);
-//     }
+  @override
+  void configure(ConfigParams config) {
+    message = config.getAsStringWithDefault('message', message);
+  }
 
-//     public isOpen(): boolean {
-//         return this._timer.isStarted();
-//     }
+  @override
+  void setReferences(IReferences references) {
+    _logger.setReferences(references);
+  }
 
-//     public open(correlationId: string, callback?: (err: any) => void): void {
-//         try {
-//             this._timer.start();
-//             this._logger.trace(correlationId, "Dummy controller opened");
-//             if (callback) callback(null);
-//         } catch (ex) {
-//             this._logger.error(correlationId, ex, "Failed to open Dummy container");
-//             if (callback) callback(ex);
-//             else throw ex;
-//         }
-//     }
-		
-//     public close(correlationId: string, callback?: (err: any) => void): void {
-//         try {
-//             this._timer.stop();
-//             this._logger.trace(correlationId, "Dummy controller closed");
-//             if (callback) callback(null);
-//         } catch (ex) {
-//             this._logger.error(correlationId, ex, "Failed to close Dummy container");
-//             if (callback) callback(ex);
-//             else throw ex;
-//         }
-//     }
+  @override
+  bool isOpen() {
+    return _timer.isStarted();
+  }
 
-//     public notify(correlationId: string, args: Parameters): void {
-//         this._logger.info(correlationId, "%d - %s", this.counter++, this.message);
-//     }
+  @override
+  Future open(String correlationId) async {
+    try {
+      _timer.start();
+      _logger.trace(correlationId, 'Dummy controller opened');
+    } catch (ex) {
+      _logger.error(correlationId, ex, 'Failed to open Dummy container');
 
-// }
+      rethrow;
+    }
+  }
+
+  @override
+  Future close(String correlationId) async {
+    try {
+      _timer.stop();
+      _logger.trace(correlationId, 'Dummy controller closed');
+    } catch (ex) {
+      _logger.error(correlationId, ex, 'Failed to close Dummy container');
+      rethrow;
+    }
+  }
+
+  @override
+  void notify(String correlationId, Parameters args) {
+    _logger.info(correlationId, '%d - %s', [counter++, message]);
+  }
+}

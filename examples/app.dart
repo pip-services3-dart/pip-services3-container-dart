@@ -1,7 +1,10 @@
-// import { DummyProcess } from './DummyProcess';
+import './DummyProcess.dart';
 
-// try {
-//     new DummyProcess().run(process.argv);
-// } catch (ex) {
-//     console.error(ex);
-// }
+void main(List<String> arguments){
+
+try {
+    DummyProcess().run(arguments);
+} catch (ex) {
+    print(ex);
+}
+}

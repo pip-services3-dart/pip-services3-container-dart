@@ -80,7 +80,7 @@ class ReferencesDecorator implements IReferences {
   T getOneOptional<T>(locator) {
     try {
       var components = find<T>(locator, false);
-      return components.length > 0 ? components[0] : null;
+      return components.isNotEmpty ? components[0] : null;
     } catch (ex) {
       return null;
     }
@@ -101,7 +101,6 @@ class ReferencesDecorator implements IReferences {
   ///
   /// - [locator] 	the locator to find references by.
   /// Returns a list with matching component references or empty list if nothing was found.
-
   @override
   List<T> getOptional<T>(locator) {
     try {
@@ -119,6 +118,7 @@ class ReferencesDecorator implements IReferences {
   /// Returns a list with matching component references.
   ///
   /// Throws a [[ReferenceException]] when no references found.
+  @override
   List<T> getRequired<T>(locator) {
     return find<T>(locator, true);
   }

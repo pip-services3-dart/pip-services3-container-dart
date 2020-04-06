@@ -1,12 +1,11 @@
-// import { ProcessContainer } from '../src/ProcessContainer';
-// import { DummyFactory } from './DummyFactory';
+import '../lib/src/ProcessContainer.dart';
+import './DummyFactory.dart';
 
-// export class DummyProcess extends ProcessContainer {
+class DummyProcess extends ProcessContainer {
 
-//     public constructor() {
-//         super("dummy", "Sample dummy process");
-//         this._configPath = './config/dummy.yaml';
-//         this._factories.add(new DummyFactory());
-//     }
+    DummyProcess():super('dummy', 'Sample dummy process') {
+        configPath = './config/dummy.yaml';
+        factories.add(DummyFactory());
+    }
 
-// }
+}

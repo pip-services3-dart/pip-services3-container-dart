@@ -24,7 +24,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
     for (var index = 0; index < components.length; index++) {
       var component = components[index];
       if (component.canCreate is Function && component.create is Function) {
-        if (component.canCreate(locator)) {
+        if (component.canCreate(locator) != null) {
           return component;
         }
       }
@@ -49,6 +49,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
       // Create component
       return factory.create(locator);
     } catch (ex) {
+      print(ex);
       return null;
     }
   }
@@ -106,7 +107,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
 
     // Throw exception is no required components found
     if (required && components.isEmpty) {
-      throw ReferenceException(null, locator);
+      throw ReferenceException(null, locator.toString());
     }
 
     return components;
