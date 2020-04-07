@@ -22,7 +22,10 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   IFactory findFactory(locator) {
     var components = getAll();
     for (var index = 0; index < components.length; index++) {
-      var component = components[index];
+       var component = components[index] ;
+       if (!(component is IFactory)) {
+        continue;
+      }
       if (component.canCreate is Function && component.create is Function) {
         if (component.canCreate(locator) != null) {
           return component;
@@ -49,7 +52,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
       // Create component
       return factory.create(locator);
     } catch (ex) {
-      print(ex);
+      //print(ex);
       return null;
     }
   }

@@ -100,10 +100,10 @@ class ProcessContainer extends Container {
     });
 
     // Gracefully shutdown
-    ProcessSignal.sigquit.watch().listen((signal) async {
-      await close(correlationId);
-      logger.info(correlationId, 'Goodbye!');
-    });
+    // ProcessSignal.sigquit.watch().listen((signal) async {
+    //   await close(correlationId);
+    //   logger.info(correlationId, 'Goodbye!');
+    // });
   }
 
   /// Runs the container by instantiating and running components inside the container.
@@ -130,7 +130,8 @@ class ProcessContainer extends Container {
       await open(correlationId);
     } catch (ex) {
       // Log uncaught exceptions
-      logger.fatal(correlationId, ex, 'Process is terminated', []);
+      var err = ApplicationException().wrap(ex);
+      logger.fatal(correlationId, err, 'Process is terminated', []);
       exit(1);
     }
   }

@@ -8,7 +8,6 @@ class DummyFactory extends Factory {
 	static var ControllerDescriptor = Descriptor('pip-services-dummies', 'controller', 'default', '*', '1.0');
 	
 	DummyFactory() : super(){
-		
 		registerAsType(DummyFactory.ControllerDescriptor, DummyController);
 	}
 	

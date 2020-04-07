@@ -1,10 +1,9 @@
 import './DummyProcess.dart';
 
-void main(List<String> arguments){
-
-try {
+void main(List<String> arguments) {
+  try {
     DummyProcess().run(arguments);
-} catch (ex) {
+  } catch (ex) {
     print(ex);
-}
+  }
 }
