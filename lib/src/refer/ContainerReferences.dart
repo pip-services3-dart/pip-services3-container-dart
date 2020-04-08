@@ -51,14 +51,16 @@ class ContainerReferences extends ManagedReferences {
         // Add component to the list
         references.put(locator, component);
 
-        if (component is IConfigurable) { //component.configure != null
+        if (component is IConfigurable) {
+          //component.configure != null
           // Configure component
           var configurable = component as IConfigurable;
           configurable.configure(componentConfig.config);
         }
 
         // Set references to factories
-        if (component is IFactory) { // component.canCreate != null && component.create != null
+        if (component is IFactory) {
+          // component.canCreate != null && component.create != null
           var referenceable = component as IReferenceable;
           referenceable.setReferences(this);
         }

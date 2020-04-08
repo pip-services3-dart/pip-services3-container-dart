@@ -45,7 +45,8 @@ class ContainerConfigReader {
   /// Returns the read container configuration
   static Future<ContainerConfig> readFromJsonFile(
       String correlationId, String path, ConfigParams parameters) async {
-    var config = await JsonConfigReader.readConfig_(correlationId, path, parameters);
+    var config =
+        await JsonConfigReader.readConfig_(correlationId, path, parameters);
     return ContainerConfig.fromConfig(config);
   }
 
@@ -57,7 +58,8 @@ class ContainerConfigReader {
   /// Returns the read container configuration
   static Future<ContainerConfig> readFromYamlFile(
       String correlationId, String path, ConfigParams parameters) async {
-    var config = await YamlConfigReader.readConfig_(correlationId, path, parameters);
+    var config =
+        await YamlConfigReader.readConfig_(correlationId, path, parameters);
     return ContainerConfig.fromConfig(config);
   }
 }

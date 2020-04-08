@@ -22,8 +22,8 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   IFactory findFactory(locator) {
     var components = getAll();
     for (var index = 0; index < components.length; index++) {
-       var component = components[index] ;
-       if (!(component is IFactory)) {
+      var component = components[index];
+      if (!(component is IFactory)) {
         continue;
       }
       if (component.canCreate is Function && component.create is Function) {
