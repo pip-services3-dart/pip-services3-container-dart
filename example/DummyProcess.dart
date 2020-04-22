@@ -7,5 +7,4 @@ class DummyProcess extends ProcessContainer {
         configPath = './config/dummy.yaml';
         factories.add(DummyFactory());
     }
-
 }

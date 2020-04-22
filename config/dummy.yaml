@@ -10,10 +10,10 @@
 - descriptor: "pip-services-dummies:controller:default:ctrl1:1.0"
   message: "Hello {{ USER }} from dummy controller #1"
 
-- type: "DummyController, DummyController.dart"
-  message: "Hello {{ USER }} from dummy controller #2"
+- type: "DummyController, ./example/DummyController.dart"
+  message: "Hello {{USER2}}{{^USER2}}Temp user{{/USER2}} from dummy controller #2"
 
 {{#THIRD_CONTROLLER}}
-- type: "DummyController, DummyController.dart"
-  message: "Hello {{ USER }} from dummy controller #3"
+- type: "DummyController, ./example/DummyController.dart"
+  message: "Hello {{USER3}}{{^USER3}}Temp user{{/USER3}}  from dummy controller #3"
 {{/THIRD_CONTROLLER}}
