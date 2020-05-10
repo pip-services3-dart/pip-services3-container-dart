@@ -96,14 +96,21 @@ class ProcessContainer extends Container {
 
     // Activate graceful exit
     ProcessSignal.sigint.watch().listen((signal) {
+      if (Platform.operatingSystem.toLowerCase().contains('windows')) {
+        close(correlationId);
+        logger.info(correlationId, 'Goodbye!');
+      }
       exit(0);
     });
 
-    // Gracefully shutdown
-    // ProcessSignal.sigquit.watch().listen((signal) async {
-    //   await close(correlationId);
-    //   logger.info(correlationId, 'Goodbye!');
-    // });
+    //Gracefully shutdown
+    if (!Platform.operatingSystem.toLowerCase().contains('windows')) {
+      ProcessSignal.sigquit.watch().listen((signal) {
+        close(correlationId);
+        logger.info(correlationId, 'Goodbye!');
+        exit(0);
+      });
+    }
   }
 
   /// Runs the container by instantiating and running components inside the container.
