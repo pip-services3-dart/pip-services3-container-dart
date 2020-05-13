@@ -96,7 +96,8 @@ class ProcessContainer extends Container {
 
     // Activate graceful exit
     ProcessSignal.sigint.watch().listen((signal) {
-      if (Platform.operatingSystem.toLowerCase().contains('windows')) {
+      if (Platform.operatingSystem.toLowerCase().contains('windows') || 
+          Platform.operatingSystem.toLowerCase().contains('macos')) {
         close(correlationId);
         logger.info(correlationId, 'Goodbye!');
       }
@@ -104,7 +105,9 @@ class ProcessContainer extends Container {
     });
 
     //Gracefully shutdown
-    if (!Platform.operatingSystem.toLowerCase().contains('windows')) {
+    if (!Platform.operatingSystem.toLowerCase().contains('windows') &&
+        !Platform.operatingSystem.toLowerCase().contains('macos')) 
+      {
       ProcessSignal.sigquit.watch().listen((signal) {
         close(correlationId);
         logger.info(correlationId, 'Goodbye!');
