@@ -77,8 +77,8 @@ class Container
 
   /// Creates a new instance of the container.
   ///
-  /// - name          (optional) a container name (accessible via ContextInfo)
-  /// - description   (optional) a container description (accessible via ContextInfo)
+  /// - [name]          (optional) a container name (accessible via ContextInfo)
+  /// - [description]   (optional) a container description (accessible via ContextInfo)
 
   Container([String name, String description]) {
     // Override in child classes
@@ -87,7 +87,7 @@ class Container
 
   /// Configures component by passing configuration parameters.
   ///
-  /// - config    configuration parameters to be set.
+  /// - [config]    configuration parameters to be set.
   @override
   void configure(ConfigParams config) {
     this.config = ContainerConfig.fromConfig(config);
@@ -96,9 +96,9 @@ class Container
   /// Reads container configuration from JSON or YAML file
   /// and parameterizes it with given values.
   ///
-  /// - correlationId     (optional) transaction id to trace execution through call chain.
-  /// - path              a path to configuration file
-  /// - parameters        values to parameters the configuration or null to skip parameterization.
+  /// - [correlationId]     (optional) transaction id to trace execution through call chain.
+  /// - [path]              a path to configuration file
+  /// - [parameters]        values to parameters the configuration or null to skip parameterization.
 
   void readConfigFromFile(
       String correlationId, String path, ConfigParams parameters) async {
@@ -138,7 +138,7 @@ class Container
   /// Adds a factory to the container. The factory is used to create components
   /// added to the container by their locators (descriptors).
   ///
-  /// - factory a component factory to be added.
+  /// - [factory] a component factory to be added.
 
   void addFactory(IFactory factory) {
     factories.add(factory);
@@ -155,8 +155,9 @@ class Container
 
   /// Opens the component.
   ///
-  /// - correlationId 	(optional) transaction id to trace execution through call chain.
-  /// - callback 			callback function that receives error or null no errors occured.
+  /// - [correlationId] 	(optional) transaction id to trace execution through call chain.
+  /// Return 			Future that receives null no errors occured.
+  /// Throws error
 
   @override
   Future open(String correlationId) async {
@@ -198,8 +199,9 @@ class Container
 
   /// Closes component and frees used resources.
   ///
-  /// - correlationId 	(optional) transaction id to trace execution through call chain.
-  /// - callback 			callback function that receives error or null no errors occured.
+  /// - [correlationId] 	(optional) transaction id to trace execution through call chain.
+  /// Return			        Future that receives null no errors occured.
+  /// Throws
 
   @override
   Future close(String correlationId) async {
