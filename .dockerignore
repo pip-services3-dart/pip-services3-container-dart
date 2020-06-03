@@ -7,7 +7,6 @@
 /*.sh
 /*.ps1
 /*.md
-/example
 /.dart_tool
 /.packages
 /pubspec.lock

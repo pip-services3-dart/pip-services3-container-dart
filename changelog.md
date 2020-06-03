@@ -9,3 +9,7 @@
 ## 1.0.2
 
 - Fix work on MacOS platform
+
+## 1.0.3
+
+- Exclude listener on SigQuit from ProcessContainer

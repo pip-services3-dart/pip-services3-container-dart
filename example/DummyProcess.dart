@@ -1,4 +1,4 @@
-import '../lib/src/ProcessContainer.dart';
+import 'package:pip_services3_container/pip_services3_container.dart';
 import './DummyFactory.dart';
 
 class DummyProcess extends ProcessContainer {

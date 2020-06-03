@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 import 'package:pip_services3_commons/pip_services3_commons.dart';
-import '../../lib/src/config/ComponentConfig.dart';
+import 'package:pip_services3_container/pip_services3_container.dart';
 
 void main() {
   group('ComponentConfig', () {

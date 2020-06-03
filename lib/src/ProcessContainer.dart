@@ -96,23 +96,24 @@ class ProcessContainer extends Container {
 
     // Activate graceful exit
     ProcessSignal.sigint.watch().listen((signal) {
-      if (Platform.operatingSystem.toLowerCase().contains('windows') ||
-          Platform.operatingSystem.toLowerCase().contains('macos')) {
-        close(correlationId);
-        logger.info(correlationId, 'Goodbye!');
-      }
+      // if (Platform.operatingSystem.toLowerCase().contains('windows') ||
+      //     Platform.operatingSystem.toLowerCase().contains('macos')) {
+      close(correlationId);
+      logger.info(correlationId, 'Goodbye!');
+      //}
       exit(0);
     });
 
-    //Gracefully shutdown
-    if (!Platform.operatingSystem.toLowerCase().contains('windows') &&
-        !Platform.operatingSystem.toLowerCase().contains('macos')) {
-      ProcessSignal.sigquit.watch().listen((signal) {
-        close(correlationId);
-        logger.info(correlationId, 'Goodbye!');
-        exit(0);
-      });
-    }
+    // Temporary exclude this code because  SigQuit not supported in Dart
+    // Gracefully shutdown
+    // if (!Platform.operatingSystem.toLowerCase().contains('windows') &&
+    //     !Platform.operatingSystem.toLowerCase().contains('macos')) {
+    //   ProcessSignal.sigquit.watch().listen((signal) {
+    //     close(correlationId);
+    //     logger.info(correlationId, 'Goodbye!');
+    //     exit(0);
+    //   });
+    // }
   }
 
   /// Runs the container by instantiating and running components inside the container.

@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 import 'package:pip_services3_commons/pip_services3_commons.dart';
 import 'package:pip_services3_components/pip_services3_components.dart';
 
-import '../../lib/src/refer/ManagedReferences.dart';
+import 'package:pip_services3_container/pip_services3_container.dart';
 
 void main() {
   group('ManagedReferences', () {
