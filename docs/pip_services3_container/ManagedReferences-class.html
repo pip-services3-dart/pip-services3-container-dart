@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the ManagedReferences class from the pip_services3_container library, for the Dart programming language.">
+  <title>ManagedReferences class - pip_services3_container library - Dart API</title>
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png">
+
+</head>
+
+<body data-base-href="../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">pip_services3_container</a></li>
+    <li><a href="../pip_services3_container/pip_services3_container-library.html">pip_services3_container</a></li>
+    <li class="self-crumb">ManagedReferences class</li>
+  </ol>
+  <div class="self-name">ManagedReferences</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="../index.html">pip_services3_container</a></li>
+      <li><a href="../pip_services3_container/pip_services3_container-library.html">pip_services3_container</a></li>
+      <li class="self-crumb">ManagedReferences class</li>
+    </ol>
+    
+    <h5>pip_services3_container library</h5>
+    <ol>
+      <li class="section-title"><a href="../pip_services3_container/pip_services3_container-library.html#classes">Classes</a></li>
+      <li><a href="../pip_services3_container/BuildReferencesDecorator-class.html">BuildReferencesDecorator</a></li>
+      <li><a href="../pip_services3_container/ComponentConfig-class.html">ComponentConfig</a></li>
+      <li><a href="../pip_services3_container/Container-class.html">Container</a></li>
+      <li><a href="../pip_services3_container/ContainerConfig-class.html">ContainerConfig</a></li>
+      <li><a href="../pip_services3_container/ContainerConfigReader-class.html">ContainerConfigReader</a></li>
+      <li><a href="../pip_services3_container/ContainerReferences-class.html">ContainerReferences</a></li>
+      <li><a href="../pip_services3_container/DefaultContainerFactory-class.html">DefaultContainerFactory</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator-class.html">LinkReferencesDecorator</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences-class.html">ManagedReferences</a></li>
+      <li><a href="../pip_services3_container/ProcessContainer-class.html">ProcessContainer</a></li>
+      <li><a href="../pip_services3_container/ReferencesDecorator-class.html">ReferencesDecorator</a></li>
+      <li><a href="../pip_services3_container/RunReferencesDecorator-class.html">RunReferencesDecorator</a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    </ol>
+  </div>
+
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <div><h1><span class="kind-class">ManagedReferences</span> class </h1></div>
+
+    <section class="desc markdown">
+      <p>Managed references that in addition to keeping and locating references can also
+manage their lifecycle:</p>
+<ul>
+<li>Auto-creation of missing component using available factories</li>
+<li>Auto-linking newly added components</li>
+<li>Auto-opening newly added components</li>
+<li>Auto-closing removed components</li>
+</ul>
+<p>See <a href="../pip_services3_container/RunReferencesDecorator-class.html">RunReferencesDecorator</a>
+See <a href="../pip_services3_container/LinkReferencesDecorator-class.html">LinkReferencesDecorator</a>
+See <a href="../pip_services3_container/BuildReferencesDecorator-class.html">BuildReferencesDecorator</a>
+See <a href="https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/References-class.html">References</a> (in the PipServices "Commons" package)</p>
+    </section>
+    
+    <section>
+      <dl class="dl-horizontal">
+        <dt>Inheritance</dt>
+        <dd><ul class="gt-separated dark clazz-relationships">
+          <li>Object</li>
+          <li><a href="../pip_services3_container/ReferencesDecorator-class.html">ReferencesDecorator</a></li>
+          <li>ManagedReferences</li>
+        </ul></dd>
+
+
+
+        <dt>Implementers</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="../pip_services3_container/ContainerReferences-class.html">ContainerReferences</a></li>
+        </ul></dd>
+
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="ManagedReferences" class="callable">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/ManagedReferences.html">ManagedReferences</a></span><span class="signature">(<span class="parameter" id="-param-tuples"><span class="type-annotation">List</span> <span class="parameter-name">tuples</span></span><wbr>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of the references <a href="../pip_services3_container/ManagedReferences/ManagedReferences.html">[...]</a>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="builder" class="property">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/builder.html">builder</a></span>
+          <span class="signature">&#8596; <a href="../pip_services3_container/BuildReferencesDecorator-class.html">BuildReferencesDecorator</a></span>         
+        </dt>
+        <dd>
+           
+                  <div class="features">read / write</div>
+</dd>
+        <dt id="linker" class="property">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/linker.html">linker</a></span>
+          <span class="signature">&#8596; <a href="../pip_services3_container/LinkReferencesDecorator-class.html">LinkReferencesDecorator</a></span>         
+        </dt>
+        <dd>
+           
+                  <div class="features">read / write</div>
+</dd>
+        <dt id="references" class="property">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/references.html">references</a></span>
+          <span class="signature">&#8596; References</span>         
+        </dt>
+        <dd>
+           
+                  <div class="features">read / write</div>
+</dd>
+        <dt id="runner" class="property">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/runner.html">runner</a></span>
+          <span class="signature">&#8596; <a href="../pip_services3_container/RunReferencesDecorator-class.html">RunReferencesDecorator</a></span>         
+        </dt>
+        <dd>
+           
+                  <div class="features">read / write</div>
+</dd>
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; int</span>         
+        </dt>
+        <dd class="inherited">
+          The hash code for this object. <a href="../pip_services3_container/ManagedReferences/hashCode.html">[...]</a>
+                  <div class="features">read-only, inherited</div>
+</dd>
+        <dt id="nextReferences" class="property inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/nextReferences.html">nextReferences</a></span>
+          <span class="signature">&#8596; IReferences</span>         
+        </dt>
+        <dd class="inherited">
+          The next references or decorator in the chain. 
+                  <div class="features">read / write, inherited</div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; Type</span>         
+        </dt>
+        <dd class="inherited">
+          A representation of the runtime type of the object. 
+                  <div class="features">read-only, inherited</div>
+</dd>
+        <dt id="topReferences" class="property inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/topReferences.html">topReferences</a></span>
+          <span class="signature">&#8596; IReferences</span>         
+        </dt>
+        <dd class="inherited">
+          The decorator at the top of the chain. 
+                  <div class="features">read / write, inherited</div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="close" class="callable">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/close.html">close</a></span><span class="signature">(<wbr><span class="parameter" id="close-param-correlationId"><span class="type-annotation">String</span> <span class="parameter-name">correlationId</span></span><wbr>)
+            <span class="returntype parameter">&#8594; Future</span>
+          </span>
+                  </dt>
+        <dd>
+          Closes component and frees used resources. <a href="../pip_services3_container/ManagedReferences/close.html">[...]</a>
+                  
+</dd>
+        <dt id="isOpen" class="callable">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/isOpen.html">isOpen</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; bool</span>
+          </span>
+                  </dt>
+        <dd>
+          Checks if the component is opened. <a href="../pip_services3_container/ManagedReferences/isOpen.html">[...]</a>
+                  
+</dd>
+        <dt id="open" class="callable">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/open.html">open</a></span><span class="signature">(<wbr><span class="parameter" id="open-param-correlationId"><span class="type-annotation">String</span> <span class="parameter-name">correlationId</span></span><wbr>)
+            <span class="returntype parameter">&#8594; Future</span>
+          </span>
+                  </dt>
+        <dd>
+          Opens the component. <a href="../pip_services3_container/ManagedReferences/open.html">[...]</a>
+                  
+</dd>
+        <dt id="find" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/find.html">find</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="find-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span>, </span><wbr><span class="parameter" id="find-param-required"><span class="type-annotation">bool</span> <span class="parameter-name">required</span></span><wbr>)
+            <span class="returntype parameter">&#8594; List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references that match specified locator. <a href="../pip_services3_container/ManagedReferences/find.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getAll" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/getAll.html">getAll</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; List</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references registered in this reference map. <a href="../pip_services3_container/ManagedReferences/getAll.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getAllLocators" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/getAllLocators.html">getAllLocators</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; List</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets locators for all registered component references in this reference map. <a href="../pip_services3_container/ManagedReferences/getAllLocators.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getOneOptional" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/getOneOptional.html">getOneOptional</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getOneOptional-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span><wbr>)
+            <span class="returntype parameter">&#8594; T</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets an optional component reference that matches specified locator. <a href="../pip_services3_container/ManagedReferences/getOneOptional.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getOneRequired" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/getOneRequired.html">getOneRequired</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getOneRequired-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span><wbr>)
+            <span class="returntype parameter">&#8594; T</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets a required component reference that matches specified locator. <a href="../pip_services3_container/ManagedReferences/getOneRequired.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getOptional" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/getOptional.html">getOptional</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getOptional-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span><wbr>)
+            <span class="returntype parameter">&#8594; List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references that match specified locator. <a href="../pip_services3_container/ManagedReferences/getOptional.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getRequired" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/getRequired.html">getRequired</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getRequired-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span><wbr>)
+            <span class="returntype parameter">&#8594; List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references that match specified locator.
+At least one component reference must be present.
+If it doesn't the method throws an error. <a href="../pip_services3_container/ManagedReferences/getRequired.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation">Invocation</span> <span class="parameter-name">invocation</span></span><wbr>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Invoked when a non-existent method or property is accessed. <a href="../pip_services3_container/ManagedReferences/noSuchMethod.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="put" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/put.html">put</a></span><span class="signature">(<wbr><span class="parameter" id="put-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span>, </span><wbr><span class="parameter" id="put-param-component"><span class="type-annotation">dynamic</span> <span class="parameter-name">component</span></span><wbr>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Puts a new reference into this reference map. <a href="../pip_services3_container/ManagedReferences/put.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="remove" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/remove.html">remove</a></span><span class="signature">(<wbr><span class="parameter" id="remove-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span><wbr>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Removes a previously added reference that matches specified locator.
+If many references match the locator, it removes only the first one.
+When all references shall be removed, use <a href="../pip_services3_container/ManagedReferences/removeAll.html">removeAll</a> method instead. <a href="../pip_services3_container/ManagedReferences/remove.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="removeAll" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/removeAll.html">removeAll</a></span><span class="signature">(<wbr><span class="parameter" id="removeAll-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span><wbr>)
+            <span class="returntype parameter">&#8594; List</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Removes all component references that match the specified locator. <a href="../pip_services3_container/ManagedReferences/removeAll.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="toString" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; String</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Returns a string representation of this object. 
+                  <div class="features">inherited</div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span><wbr>)
+            <span class="returntype parameter">&#8594; bool</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          The equality operator. <a href="../pip_services3_container/ManagedReferences/operator_equals.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+      </dl>
+    </section>
+
+
+    <section class="summary offset-anchor" id="static-methods">
+      <h2>Static Methods</h2>
+      <dl class="callables">
+        <dt id="fromTuples" class="callable">
+          <span class="name"><a href="../pip_services3_container/ManagedReferences/fromTuples.html">fromTuples</a></span><span class="signature">(<wbr><span class="parameter" id="fromTuples-param-tuples"><span class="type-annotation">List</span> <span class="parameter-name">tuples</span></span><wbr>)
+            <span class="returntype parameter">&#8594; <a href="../pip_services3_container/ManagedReferences-class.html">ManagedReferences</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Creates a new ManagedReferences object filled with provided key-value pairs called tuples.
+Tuples parameters contain a sequence of locator1, component1, locator2, component2, ... pairs. <a href="../pip_services3_container/ManagedReferences/fromTuples.html">[...]</a>
+                  
+</dd>
+      </dl>
+    </section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <ol>
+    
+      <li class="section-title"><a href="../pip_services3_container/ManagedReferences-class.html#constructors">Constructors</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/ManagedReferences.html">ManagedReferences</a></li>
+    
+      <li class="section-title">
+        <a href="../pip_services3_container/ManagedReferences-class.html#instance-properties">Properties</a>
+      </li>
+      <li><a href="../pip_services3_container/ManagedReferences/builder.html">builder</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/linker.html">linker</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/references.html">references</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/runner.html">runner</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/nextReferences.html">nextReferences</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/runtimeType.html">runtimeType</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/topReferences.html">topReferences</a></li>
+    
+      <li class="section-title"><a href="../pip_services3_container/ManagedReferences-class.html#instance-methods">Methods</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/close.html">close</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/isOpen.html">isOpen</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/open.html">open</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/find.html">find</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/getAll.html">getAll</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/getAllLocators.html">getAllLocators</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/getOneOptional.html">getOneOptional</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/getOneRequired.html">getOneRequired</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/getOptional.html">getOptional</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/getRequired.html">getRequired</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/noSuchMethod.html">noSuchMethod</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/put.html">put</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/remove.html">remove</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/removeAll.html">removeAll</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/toString.html">toString</a></li>
+    
+      <li class="section-title inherited"><a href="../pip_services3_container/ManagedReferences-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ManagedReferences/operator_equals.html">operator ==</a></li>
+    
+    
+      <li class="section-title"><a href="../pip_services3_container/ManagedReferences-class.html#static-methods">Static methods</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences/fromTuples.html">fromTuples</a></li>
+    
+    
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    pip_services3_container
+      1.0.3
+  </span>
+
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../static-assets/typeahead.bundle.min.js"></script>
+<script src="../static-assets/highlight.pack.js"></script>
+<script src="../static-assets/URI.js"></script>
+<script src="../static-assets/script.js"></script>
+
+
+</body>
+
+</html>
