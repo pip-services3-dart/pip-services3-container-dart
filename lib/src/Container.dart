@@ -15,13 +15,13 @@ import './refer/ContainerReferences.dart';
 ///
 /// On container start it performs the following actions:
 /// - Creates components using their types or calls registered factories to create components using their locators
-/// - Configures components that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable interface]] and passes them their configuration parameters
-/// - Sets references to components that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable interface]] and passes them references of all components in the container
-/// - Opens components that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/run.iopenable.html IOpenable interface]]
+/// - Configures components that implement [IConfigurable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IConfigurable-class.html) and passes them their configuration parameters
+/// - Sets references to components that implement [IReferenceable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IReferenceable-class.html) and passes them references of all components in the container
+/// - Opens components that implement [IOpenable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IOpenable-class.html)
 ///
 /// On container stop actions are performed in reversed order:
-/// - Closes components that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/run.iclosable.html ICloseable interface]]
-/// - Unsets references in components that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.iunreferenceable.html IUnreferenceable interface]]
+/// - Closes components that implement [IClosable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IClosable-class.html)
+/// - Unsets references in components that implement [IUnreferenceable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IUnreferenceable-class.html)
 /// - Destroys components in the container.
 ///
 /// The component configuration can be parameterized by dynamic values. That allows specialized containers
@@ -30,9 +30,9 @@ import './refer/ContainerReferences.dart';
 /// The container automatically creates a ContextInfo component that carries detail information
 /// about the container and makes it available for other components.
 ///
-/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/config.iconfigurable.html IConfigurable]] (in the PipServices 'Commons' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable]] (in the PipServices 'Commons' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/run.iopenable.html IOpenable]] (in the PipServices 'Commons' package)
+/// See [IConfigurable](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IConfigurable-class.html) (in the PipServices 'Commons' package)
+/// See [IReferenceable](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IReferenceable-class.html) (in the PipServices 'Commons' package)
+/// See [IOpenable](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IOpenable-class.html) (in the PipServices 'Commons' package)
 ///
 /// ### Configuration parameters ###
 ///

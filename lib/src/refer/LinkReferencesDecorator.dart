@@ -3,8 +3,8 @@ import 'package:pip_services3_commons/pip_services3_commons.dart';
 import './ReferencesDecorator.dart';
 
 /// References decorator that automatically sets references to newly added components
-/// that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferenceable.html IReferenceable interface]] and unsets references from removed components
-/// that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.iunreferenceable.html IUnreferenceable interface]].
+/// that implement [IReferenceable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IReferenceable-class.html) and unsets references from removed components
+/// that implement [IUnreferenceable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IUnreferenceable-class.html).
 
 class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
   bool _opened = false;
@@ -67,12 +67,12 @@ class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
 
   /// Removes a previously added reference that matches specified locator.
   /// If many references match the locator, it removes only the first one.
-  /// When all references shall be removed, use [[removeAll]] method instead.
+  /// When all references shall be removed, use [removeAll] method instead.
   ///
   /// - [locator] 	a locator to remove reference
   /// Returns the removed component reference.
   ///
-  /// See [[removeAll]]
+  /// See [removeAll]
   @override
   dynamic remove(locator) {
     var component = super.remove(locator);

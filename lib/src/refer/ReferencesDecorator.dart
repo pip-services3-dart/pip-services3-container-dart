@@ -3,7 +3,7 @@ import 'package:pip_services3_commons/pip_services3_commons.dart';
 /// Chainable decorator for IReferences that allows to inject additional capabilities
 /// such as automatic component creation, automatic registration and opening.
 ///
-/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the PipServices "Commons" package)
+/// See [IReferences](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IReferences-class.html) (in the PipServices "Commons" package)
 
 class ReferencesDecorator implements IReferences {
   /// Creates a new instance of the decorator.
@@ -33,12 +33,12 @@ class ReferencesDecorator implements IReferences {
 
   /// Removes a previously added reference that matches specified locator.
   /// If many references match the locator, it removes only the first one.
-  /// When all references shall be removed, use [[removeAll]] method instead.
+  /// When all references shall be removed, use [removeAll] method instead.
   ///
   /// - [locator] 	a locator to remove reference
   /// Returns the removed component reference.
   ///
-  /// See [[removeAll]]
+  /// See [removeAll]
 
   @override
   dynamic remove(locator) {
@@ -90,7 +90,7 @@ class ReferencesDecorator implements IReferences {
   ///
   /// - [locator] 	the locator to find a reference by.
   /// Returns a matching component reference.
-  /// Throws a [[ReferenceException]] when no references found.
+  /// Throws a [ReferenceException] when no references found.
   @override
   T getOneRequired<T>(locator) {
     var components = find<T>(locator, true);
@@ -117,7 +117,7 @@ class ReferencesDecorator implements IReferences {
   /// - [locator] 	the locator to find references by.
   /// Returns a list with matching component references.
   ///
-  /// Throws a [[ReferenceException]] when no references found.
+  /// Throws a [ReferenceException] when no references found.
   @override
   List<T> getRequired<T>(locator) {
     return find<T>(locator, true);
@@ -129,7 +129,7 @@ class ReferencesDecorator implements IReferences {
   /// - [required] 	forces to raise an exception if no reference is found.
   /// Returns a list with matching component references.
   ///
-  /// Throws a [[ReferenceException]] when required is set to true but no references found.
+  /// Throws a [ReferenceException] when required is set to true but no references found.
   @override
   List<T> find<T>(locator, bool required) {
     return nextReferences.find<T>(locator, required);

@@ -7,7 +7,7 @@ import './ManagedReferences.dart';
 
 /// Container managed references that can be created from container configuration.
 ///
-/// See [[ManagedReferences]]
+/// See [ManagedReferences]
 
 class ContainerReferences extends ManagedReferences {
   ContainerReferences(List tuples) : super(tuples);

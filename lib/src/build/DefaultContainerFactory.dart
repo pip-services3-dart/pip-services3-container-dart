@@ -3,15 +3,15 @@ import 'package:pip_services3_commons/pip_services3_commons.dart';
 
 /// Creates default container components (loggers, counters, caches, locks, etc.) by their descriptors.
 ///
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/build.factory.html Factory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/info.defaultinfofactory.html DefaultInfoFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/log.defaultloggerfactory.html DefaultLoggerFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/count.defaultcountersfactory.html DefaultCountersFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/config.defaultconfigreaderfactory.html DefaultConfigReaderFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/cache.defaultcachefactory.html DefaultCacheFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/auth.defaultcredentialstorefactory.html DefaultCredentialStoreFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/connect.defaultdiscoveryfactory.html DefaultDiscoveryFactory]] (in the PipServices 'Components' package)
-/// See [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/classes/test.defaulttestfactory.html DefaultTestFactory]] (in the PipServices 'Components' package)
+/// See [Factory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/Factory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultInfoFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultInfoFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultLoggerFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultLoggerFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultCountersFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultCountersFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultConfigReaderFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultConfigReaderFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultCacheFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultCacheFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultCredentialStoreFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultCredentialStoreFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultDiscoveryFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultDiscoveryFactory-class.html) (in the PipServices 'Components' package)
+/// See [DefaultTestFactory](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/DefaultTestFactory-class.html) (in the PipServices 'Components' package)
 
 class DefaultContainerFactory extends CompositeFactory {
   static final descriptor =

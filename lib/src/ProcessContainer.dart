@@ -14,7 +14,7 @@ import './Container.dart';
 /// - [--param / --params / -p]   value(s) to parameterize the container configuration
 /// - [--help / -h]               prints the container usage help
 ///
-/// See [[Container]]
+/// See [Container]
 ///
 /// ### Example ###
 ///

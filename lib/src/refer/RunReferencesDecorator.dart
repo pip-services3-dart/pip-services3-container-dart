@@ -3,8 +3,8 @@ import 'package:pip_services3_commons/pip_services3_commons.dart';
 import './ReferencesDecorator.dart';
 
 /// References decorator that automatically opens to newly added components
-/// that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/run.iopenable.html IOpenable interface]] and closes removed components
-/// that implement [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/interfaces/run.iclosable.html ICloseable interface]].
+/// that implement [IOpenable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IOpenable-class.html) and closes removed components
+/// that implement [IClosable interface](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IClosable-class.html).
 
 class RunReferencesDecorator extends ReferencesDecorator implements IOpenable {
   bool opened = false;
@@ -69,12 +69,12 @@ class RunReferencesDecorator extends ReferencesDecorator implements IOpenable {
 
   /// Removes a previously added reference that matches specified locator.
   /// If many references match the locator, it removes only the first one.
-  /// When all references shall be removed, use [[removeAll]] method instead.
+  /// When all references shall be removed, use [removeAll] method instead.
   ///
   /// - locator 	a locator to remove reference
   /// Returns the removed component reference.
   ///
-  /// See [[removeAll]]
+  /// See [removeAll]
   @override
   dynamic remove(locator) {
     var component = super.remove(locator);

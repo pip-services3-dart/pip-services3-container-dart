@@ -13,10 +13,10 @@ import './RunReferencesDecorator.dart';
 /// - Auto-opening newly added components
 /// - Auto-closing removed components
 ///
-/// See [[RunReferencesDecorator]]
-/// See [[LinkReferencesDecorator]]
-/// See [[BuildReferencesDecorator]]
-/// See [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/refer.references.html References]] (in the PipServices "Commons" package)
+/// See [RunReferencesDecorator]
+/// See [LinkReferencesDecorator]
+/// See [BuildReferencesDecorator]
+/// See [References](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/References-class.html) (in the PipServices "Commons" package)
 
 class ManagedReferences extends ReferencesDecorator implements IOpenable {
   References references;

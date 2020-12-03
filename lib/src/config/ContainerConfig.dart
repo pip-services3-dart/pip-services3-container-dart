@@ -4,7 +4,7 @@ import './ComponentConfig.dart';
 
 /// Container configuration defined as a list of component configurations.
 ///
-/// See [[ComponentConfig]]
+/// See [ComponentConfig]
 
 class ContainerConfig extends ListBase<ComponentConfig> {
   final _values = <ComponentConfig>[];
@@ -24,7 +24,7 @@ class ContainerConfig extends ListBase<ComponentConfig> {
   /// - [value]		an object with key-value pairs used to initialize a new ContainerConfig.
   /// Returns			a new ContainerConfig object.
   ///
-  /// See [[fromConfig]]
+  /// See [fromConfig]
   static ContainerConfig fromValue(value) {
     var config = ConfigParams.fromValue(value);
     return ContainerConfig.fromConfig(config);

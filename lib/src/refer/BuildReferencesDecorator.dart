@@ -44,7 +44,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   ///
   /// Throws a CreateException if the factory is not able to create the component.
   ///
-  /// See [[findFactory]]
+  /// See [findFactory]
   dynamic create(locator, IFactory factory) {
     if (factory == null) return null;
 
@@ -88,7 +88,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   /// - [required] 	forces to raise an exception if no reference is found.
   /// Returns a list with matching component references.
   ///
-  /// Throws a [[ReferenceException]] when required is set to true but no references found.
+  /// Throws a [ReferenceException] when required is set to true but no references found.
   @override
   List<T> find<T>(locator, bool required) {
     var components = super.find<T>(locator, false);
