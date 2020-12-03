@@ -2,11 +2,13 @@
 /.git
 /.gitignore
 /.dockerignore
-/doc
-/docker
+/docs
+/docker/Dockerfile*
+/docker/docker-compose*.yml
 /*.sh
 /*.ps1
 /*.md
+/example
 /.dart_tool
 /.packages
 /pubspec.lock
