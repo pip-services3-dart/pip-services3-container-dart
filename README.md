@@ -18,7 +18,8 @@ The module contains the following packages:
 
 <a name="links"></a> Quick links:
 
-* [API Reference](https://pub.dev/documentation/pip_services3_components/latest/pip_services3_components/pip_services3_components-library.html)
+* [Configuration](https://www.pipservices.org/recipies/configuration) 
+* [API Reference](https://pub.dev/documentation/pip_services3_container/latest/pip_services3_container/pip_services3_container-library.html)
 * [Change Log](CHANGELOG.md)
 * [Get Help](https://www.pipservices.org/community/help)
 * [Contribute](https://www.pipservices.org/community/contribute)
