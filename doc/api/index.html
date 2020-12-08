@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 0.32.4">
+  <meta name="description" content="pip_services3_container API docs, for the Dart programming language.">
+  <title>pip_services3_container - Dart API docs</title>
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+</head>
+
+<body data-base-href=""
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/pip-services3-dart/pip-services3-container-dart">pip_services3_container package</a></li>
+  </ol>
+  <div class="self-name">pip_services3_container</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="https://github.com/pip-services3-dart/pip-services3-container-dart">pip_services3_container package</a></li>
+    </ol>
+    
+    <h5 class="hidden-xs"><span class="package-name">pip_services3_container</span> <span class="package-kind">package</span></h5>
+    <ol>
+          <li class="section-title">Libraries</li>
+          <li><a href="pip_services3_container/pip_services3_container-library.html">pip_services3_container</a></li>
+    </ol>
+  </div>
+
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <section class="desc markdown">
+        <h1 id="img-srchttpsuploads-sslwebflowcom5ea5d3315186cf5ec60c3ee45edf1c94ce4c859f2b188094_logosvg-altpipservices-logo-width200-br-ioc-container-for-dart"><img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> &lt;br/&gt; IoC container for Dart</h1>
+<p>This module is a part of the <a href="http://pipservices.org">Pip.Services</a> polyglot microservices toolkit. It provides an inversion-of-control (IoC) container to facilitate the development of services and applications composed of loosely coupled components.</p>
+<p>The module containes a basic in-memory container that can be embedded inside a service or application, or can be run by itself.
+The second container type can run as a system level process and can be configured via command line arguments.
+Also it can be used to create docker containers.</p>
+<p>The containers can read configuration from JSON or YAML files use it as a recipe for instantiating and configuring components.
+Component factories are used to create components based on their locators (descriptor) defined in the container configuration.
+The factories shall be registered in containers or dynamically in the container configuration file.</p>
+<p>The module contains the following packages:</p>
+<ul>
+<li><strong>Core</strong> - Basic in-memory and process containers</li>
+<li><strong>Build</strong> - Default container factory</li>
+<li><strong>Config</strong> - Container configuration components</li>
+<li><strong>Refer</strong> - Inter-container reference management (implementation of the Referenceable pattern inside an IoC container)</li>
+</ul>
+<p><a name="links"></a> Quick links:</p>
+<ul>
+<li><a href="https://www.pipservices.org/recipies/configuration">Configuration</a> </li>
+<li><a href="https://pub.dev/documentation/pip_services3_container/latest/pip_services3_container/pip_services3_container-library.html">API Reference</a></li>
+<li><a href="CHANGELOG.md">Change Log</a></li>
+<li><a href="https://www.pipservices.org/community/help">Get Help</a></li>
+<li><a href="https://www.pipservices.org/community/contribute">Contribute</a></li>
+</ul>
+<h2 id="use">Use</h2>
+<p>Add this to your package's pubspec.yaml file:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  pip_services3_container: version
+</code></pre>
+<p>Now you can install package from the command line:</p>
+<pre class="language-bash"><code class="language-bash">pub get
+</code></pre>
+<p>Create a factory to create components based on their locators (descriptors).</p>
+<pre class="language-dart"><code class="language-dart">import 'package:pip_services3_components/src/build/Factory.dart';
+import 'package:pip_services3_commons/src/refer/Descriptor.dart';
+
+class MyFactory extends Factory {
+  static final MyComponentDescriptor =
+      Descritor("myservice", "mycomponent", "default", "*", "1.0");
+
+  MyFactory() : super() {
+    this.registerAsType(MyFactory.MyComponentDescriptor, MyComponent);
+  }
+}
+
+</code></pre>
+<p>Then create a process container and register the factory there. You can also register factories defined in other
+modules if you plan to include external components into your container.</p>
+<pre class="language-dart"><code class="language-dart">import 'package:pip_services3_container/src/ProcessContainer.dart';
+import 'package:pip_services3_rpc/src/build/DefaultRpcFactory.dart';
+
+class MyProcess extends ProcessContainer {
+  MyProcess():super('myservice', 'My service running as a process') {
+    
+    this._factories.add(DefaultRpcFactory());
+    this._factories.add(MyFactory());
+  }
+}
+</code></pre>
+<p>Define YAML configuration file with components and their descriptors.
+The configuration file is pre-processed using <a href="https://handlebarsjs.com">Handlebars templating engine</a>
+that allows to inject configuration parameters or dynamically include/exclude components using conditional blocks.
+The values for the templating engine are defined via process command line arguments or via environment variables.
+Support for environment variables works well in docker or other containers like AWS Lambda functions.</p>
+<pre class="language-yaml"><code class="language-yaml">---
+# Context information
+- descriptor: "pip-services:context-info:default:default:1.0"
+  name: myservice
+  description: My service running in a process container
+
+# Console logger
+- descriptor: "pip-services:logger:console:default:1.0"
+  level: {{LOG_LEVEL}}{{^LOG_LEVEL}}info{{/LOG_LEVEL}}
+
+# Performance counters that posts values to log
+- descriptor: "pip-services:counters:log:default:1.0"
+  
+# My component
+- descriptor: "myservice:mycomponent:default:default:1.0"
+  param1: XYZ
+  param2: 987
+  
+{{#if HTTP_ENABLED}}
+# HTTP endpoint version 1.0
+- descriptor: "pip-services:endpoint:http:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: {{HTTP_PORT}}{{^HTTP_PORT}}8080{{/HTTP_PORT}}
+
+ # Default Status
+- descriptor: "pip-services:status-service:http:default:1.0"
+
+# Default Heartbeat
+- descriptor: "pip-services:heartbeat-service:http:default:1.0"
+{{/if}}
+</code></pre>
+<p>To instantiate and run the container we need a simple process launcher.</p>
+<pre class="language-dart"><code class="language-dart">void main(List&lt;String&gt; args) {
+  try {
+    var proc = MyProcess();
+    proc.configPath = "./config/config.yml";
+    proc.run(args);
+  } catch (ex) {
+    print(ex);
+  }
+}
+</code></pre>
+<p>And, finally, you can run your service launcher as</p>
+<pre class="language-bash"><code class="language-bash">dart run ./service.dart
+</code></pre>
+<h2 id="develop">Develop</h2>
+<p>For development you shall install the following prerequisites:</p>
+<ul>
+<li>Dart SDK 2</li>
+<li>Visual Studio Code or another IDE of your choice</li>
+<li>Docker</li>
+</ul>
+<p>Install dependencies:</p>
+<pre class="language-bash"><code class="language-bash">pub get
+</code></pre>
+<p>Run automated tests:</p>
+<pre class="language-bash"><code class="language-bash">pub run test
+</code></pre>
+<p>Generate API documentation:</p>
+<pre class="language-bash"><code class="language-bash">./docgen.ps1
+</code></pre>
+<p>Before committing changes run dockerized build and test as:</p>
+<pre class="language-bash"><code class="language-bash">./build.ps1
+./test.ps1
+./clear.ps1
+</code></pre>
+<h2 id="contacts">Contacts</h2>
+<p>The Dart version of Pip.Services is created and maintained by:</p>
+<ul>
+<li><strong>Sergey Seroukhov</strong></li>
+<li><strong>Levichev Dmitry</strong></li>
+</ul>
+<p>The documentation is written by:</p>
+<ul>
+<li><strong>Mark Makarychev</strong></li>
+<li><strong>Levichev Dmitry</strong></li>
+</ul>
+      </section>
+      
+        <section class="summary">
+            <h2>Libraries</h2>
+          <dl>
+            <dt id="pip_services3_container">
+              <span class="name"><a href="pip_services3_container/pip_services3_container-library.html">pip_services3_container</a></span>             
+            </dt>
+            <dd>
+              Preferred
+Contains implementation of the inversion of control container, which creates objects
+and controls their lifecycle(*) using various configurations. <a href="pip_services3_container/pip_services3_container-library.html">[...]</a>
+            </dd>
+          </dl>
+        </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    pip_services3_container
+      1.0.3
+  </span>
+
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+
+
+</body>
+
+</html>

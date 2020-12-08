@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the LinkReferencesDecorator class from the pip_services3_container library, for the Dart programming language.">
+  <title>LinkReferencesDecorator class - pip_services3_container library - Dart API</title>
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../static-assets/github.css">
+  <link rel="stylesheet" href="../static-assets/styles.css">
+  <link rel="icon" href="../static-assets/favicon.png">
+
+</head>
+
+<body data-base-href="../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">pip_services3_container</a></li>
+    <li><a href="../pip_services3_container/pip_services3_container-library.html">pip_services3_container</a></li>
+    <li class="self-crumb">LinkReferencesDecorator class</li>
+  </ol>
+  <div class="self-name">LinkReferencesDecorator</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="../index.html">pip_services3_container</a></li>
+      <li><a href="../pip_services3_container/pip_services3_container-library.html">pip_services3_container</a></li>
+      <li class="self-crumb">LinkReferencesDecorator class</li>
+    </ol>
+    
+    <h5>pip_services3_container library</h5>
+    <ol>
+      <li class="section-title"><a href="../pip_services3_container/pip_services3_container-library.html#classes">Classes</a></li>
+      <li><a href="../pip_services3_container/BuildReferencesDecorator-class.html">BuildReferencesDecorator</a></li>
+      <li><a href="../pip_services3_container/ComponentConfig-class.html">ComponentConfig</a></li>
+      <li><a href="../pip_services3_container/Container-class.html">Container</a></li>
+      <li><a href="../pip_services3_container/ContainerConfig-class.html">ContainerConfig</a></li>
+      <li><a href="../pip_services3_container/ContainerConfigReader-class.html">ContainerConfigReader</a></li>
+      <li><a href="../pip_services3_container/ContainerReferences-class.html">ContainerReferences</a></li>
+      <li><a href="../pip_services3_container/DefaultContainerFactory-class.html">DefaultContainerFactory</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator-class.html">LinkReferencesDecorator</a></li>
+      <li><a href="../pip_services3_container/ManagedReferences-class.html">ManagedReferences</a></li>
+      <li><a href="../pip_services3_container/ProcessContainer-class.html">ProcessContainer</a></li>
+      <li><a href="../pip_services3_container/ReferencesDecorator-class.html">ReferencesDecorator</a></li>
+      <li><a href="../pip_services3_container/RunReferencesDecorator-class.html">RunReferencesDecorator</a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    </ol>
+  </div>
+
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <div><h1><span class="kind-class">LinkReferencesDecorator</span> class  </h1></div>
+
+    <section class="desc markdown">
+      <p>References decorator that automatically sets references to newly added components
+that implement <a href="https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IReferenceable-class.html">IReferenceable interface</a> and unsets references from removed components
+that implement <a href="https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/IUnreferenceable-class.html">IUnreferenceable interface</a>.</p>
+    </section>
+    
+    <section>
+      <dl class="dl-horizontal">
+        <dt>Inheritance</dt>
+        <dd><ul class="gt-separated dark clazz-relationships">
+          <li><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object-class.html">Object</a></li>
+          <li><a href="../pip_services3_container/ReferencesDecorator-class.html">ReferencesDecorator</a></li>
+          <li>LinkReferencesDecorator</li>
+        </ul></dd>
+
+        <dt>Implemented types</dt>
+        <dd>
+          <ul class="comma-separated clazz-relationships">
+            <li><a href="https://pub.dev/documentation/pip_services3_commons/1.0.11/pip_services3_commons/IOpenable-class.html">IOpenable</a></li>
+          </ul>
+        </dd>
+
+
+
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="LinkReferencesDecorator" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/LinkReferencesDecorator.html">LinkReferencesDecorator</a></span><span class="signature">(<span class="parameter" id="-param-nextReferences"><span class="type-annotation"><a href="https://pub.dev/documentation/pip_services3_commons/1.0.11/pip_services3_commons/IReferences-class.html">IReferences</a></span> <span class="parameter-name">nextReferences</span>, </span><span class="parameter" id="-param-topReferences"><span class="type-annotation"><a href="https://pub.dev/documentation/pip_services3_commons/1.0.11/pip_services3_commons/IReferences-class.html">IReferences</a></span> <span class="parameter-name">topReferences</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of the decorator. <a href="../pip_services3_container/LinkReferencesDecorator/LinkReferencesDecorator.html">[...]</a>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/int-class.html">int</a></span>         
+        </dt>
+        <dd class="inherited">
+          The hash code for this object. <a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/hashCode.html">[...]</a>
+                  <div class="features">read-only, inherited</div>
+</dd>
+        <dt id="nextReferences" class="property inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/nextReferences.html">nextReferences</a></span>
+          <span class="signature">&#8596; <a href="https://pub.dev/documentation/pip_services3_commons/1.0.11/pip_services3_commons/IReferences-class.html">IReferences</a></span>         
+        </dt>
+        <dd class="inherited">
+          The next references or decorator in the chain. 
+                  <div class="features">read / write, inherited</div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/Type-class.html">Type</a></span>         
+        </dt>
+        <dd class="inherited">
+          A representation of the runtime type of the object. 
+                  <div class="features">read-only, inherited</div>
+</dd>
+        <dt id="topReferences" class="property inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/topReferences.html">topReferences</a></span>
+          <span class="signature">&#8596; <a href="https://pub.dev/documentation/pip_services3_commons/1.0.11/pip_services3_commons/IReferences-class.html">IReferences</a></span>         
+        </dt>
+        <dd class="inherited">
+          The decorator at the top of the chain. 
+                  <div class="features">read / write, inherited</div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="close" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/close.html">close</a></span><span class="signature">(<wbr><span class="parameter" id="close-param-correlationId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.10.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">correlationId</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-async/Future-class.html">Future</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Closes component and frees used resources. <a href="../pip_services3_container/LinkReferencesDecorator/close.html">[...]</a>
+                  <div class="features">override</div>
+</dd>
+        <dt id="find" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/find.html">find</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="find-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span>, </span><span class="parameter" id="find-param-required"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.10.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">required</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references that match specified locator. <a href="../pip_services3_container/ReferencesDecorator/find.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getAll" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/getAll.html">getAll</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/List-class.html">List</a></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references registered in this reference map. <a href="../pip_services3_container/ReferencesDecorator/getAll.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getAllLocators" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/getAllLocators.html">getAllLocators</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/List-class.html">List</a></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets locators for all registered component references in this reference map. <a href="../pip_services3_container/ReferencesDecorator/getAllLocators.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getOneOptional" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/getOneOptional.html">getOneOptional</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getOneOptional-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span>)
+            <span class="returntype parameter">&#8594; T</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets an optional component reference that matches specified locator. <a href="../pip_services3_container/ReferencesDecorator/getOneOptional.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getOneRequired" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/getOneRequired.html">getOneRequired</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getOneRequired-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span>)
+            <span class="returntype parameter">&#8594; T</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets a required component reference that matches specified locator. <a href="../pip_services3_container/ReferencesDecorator/getOneRequired.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getOptional" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/getOptional.html">getOptional</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getOptional-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references that match specified locator. <a href="../pip_services3_container/ReferencesDecorator/getOptional.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="getRequired" class="callable inherited">
+          <span class="name"><a href="../pip_services3_container/ReferencesDecorator/getRequired.html">getRequired</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getRequired-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Gets all component references that match specified locator.
+At least one component reference must be present.
+If it doesn't the method throws an error. <a href="../pip_services3_container/ReferencesDecorator/getRequired.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="isOpen" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/isOpen.html">isOpen</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/bool-class.html">bool</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Checks if the component is opened. <a href="../pip_services3_container/LinkReferencesDecorator/isOpen.html">[...]</a>
+                  <div class="features">override</div>
+</dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Invoked when a non-existent method or property is accessed. <a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/noSuchMethod.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+        <dt id="open" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/open.html">open</a></span><span class="signature">(<wbr><span class="parameter" id="open-param-correlationId"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.10.4/dart-core/String-class.html">String</a></span> <span class="parameter-name">correlationId</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-async/Future-class.html">Future</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Opens the component. <a href="../pip_services3_container/LinkReferencesDecorator/open.html">[...]</a>
+                  <div class="features">override</div>
+</dd>
+        <dt id="put" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/put.html">put</a></span><span class="signature">(<wbr><span class="parameter" id="put-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span>, </span><span class="parameter" id="put-param-component"><span class="type-annotation">dynamic</span> <span class="parameter-name">component</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+                  </dt>
+        <dd>
+          Puts a new reference into this reference map. <a href="../pip_services3_container/LinkReferencesDecorator/put.html">[...]</a>
+                  <div class="features">override</div>
+</dd>
+        <dt id="remove" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/remove.html">remove</a></span><span class="signature">(<wbr><span class="parameter" id="remove-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+                  </dt>
+        <dd>
+          Removes a previously added reference that matches specified locator.
+If many references match the locator, it removes only the first one.
+When all references shall be removed, use <a href="../pip_services3_container/LinkReferencesDecorator/removeAll.html">removeAll</a> method instead. <a href="../pip_services3_container/LinkReferencesDecorator/remove.html">[...]</a>
+                  <div class="features">override</div>
+</dd>
+        <dt id="removeAll" class="callable">
+          <span class="name"><a href="../pip_services3_container/LinkReferencesDecorator/removeAll.html">removeAll</a></span><span class="signature">(<wbr><span class="parameter" id="removeAll-param-locator"><span class="type-annotation">dynamic</span> <span class="parameter-name">locator</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/List-class.html">List</a></span>
+          </span>
+                  </dt>
+        <dd>
+          Removes all component references that match the specified locator. <a href="../pip_services3_container/LinkReferencesDecorator/removeAll.html">[...]</a>
+                  <div class="features">override</div>
+</dd>
+        <dt id="toString" class="callable inherited">
+          <span class="name"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/String-class.html">String</a></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          Returns a string representation of this object. 
+                  <div class="features">inherited</div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.10.4/dart-core/bool-class.html">bool</a></span>
+          </span>
+                  </dt>
+        <dd class="inherited">
+          The equality operator. <a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/operator_equals.html">[...]</a>
+                  <div class="features">inherited</div>
+</dd>
+      </dl>
+    </section>
+
+
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <ol>
+    
+      <li class="section-title"><a href="../pip_services3_container/LinkReferencesDecorator-class.html#constructors">Constructors</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/LinkReferencesDecorator.html">LinkReferencesDecorator</a></li>
+    
+      <li class="section-title inherited">
+        <a href="../pip_services3_container/LinkReferencesDecorator-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/nextReferences.html">nextReferences</a></li>
+      <li class="inherited"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/runtimeType.html">runtimeType</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/topReferences.html">topReferences</a></li>
+    
+      <li class="section-title"><a href="../pip_services3_container/LinkReferencesDecorator-class.html#instance-methods">Methods</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/close.html">close</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/find.html">find</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/getAll.html">getAll</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/getAllLocators.html">getAllLocators</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/getOneOptional.html">getOneOptional</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/getOneRequired.html">getOneRequired</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/getOptional.html">getOptional</a></li>
+      <li class="inherited"><a href="../pip_services3_container/ReferencesDecorator/getRequired.html">getRequired</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/isOpen.html">isOpen</a></li>
+      <li class="inherited"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/open.html">open</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/put.html">put</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/remove.html">remove</a></li>
+      <li><a href="../pip_services3_container/LinkReferencesDecorator/removeAll.html">removeAll</a></li>
+      <li class="inherited"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/toString.html">toString</a></li>
+    
+      <li class="section-title inherited"><a href="../pip_services3_container/LinkReferencesDecorator-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="https://api.dart.dev/stable/2.10.4/dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+    
+    
+    
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    pip_services3_container
+      1.0.3
+  </span>
+
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../static-assets/typeahead.bundle.min.js"></script>
+<script src="../static-assets/highlight.pack.js"></script>
+<script src="../static-assets/URI.js"></script>
+<script src="../static-assets/script.js"></script>
+
+
+</body>
+
+</html>
