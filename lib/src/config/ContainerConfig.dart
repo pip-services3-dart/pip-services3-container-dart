@@ -12,7 +12,7 @@ class ContainerConfig extends ListBase<ComponentConfig> {
   /// Creates a new instance of container configuration.
   ///
   /// - [components]    (optional) a list of component configurations.
-  ContainerConfig([List<ComponentConfig> components]) : super() {
+  ContainerConfig([List<ComponentConfig>? components]) : super() {
     if (components != null) {
       super.addAll(components);
     }
@@ -35,7 +35,7 @@ class ContainerConfig extends ListBase<ComponentConfig> {
   ///
   /// - [value]		an object with key-value pairs used to initialize a new ContainerConfig.
   /// Returns			a new ContainerConfig object.
-  static ContainerConfig fromConfig(ConfigParams config) {
+  static ContainerConfig fromConfig(ConfigParams? config) {
     var result = ContainerConfig();
     if (config == null) return result;
 
@@ -56,6 +56,11 @@ class ContainerConfig extends ListBase<ComponentConfig> {
   @override
   set length(int l) {
     _values.length = l;
+  }
+
+  @override
+  void add(ComponentConfig value) {
+    _values.add(value);
   }
 
   @override

@@ -19,7 +19,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   ///
   /// - [locator]   a locator of component to be created.
   /// Returns found factory or null if factory was not found.
-  IFactory findFactory(locator) {
+  IFactory? findFactory(locator) {
     var components = getAll();
     for (var index = 0; index < components.length; index++) {
       var component = components[index];
@@ -45,7 +45,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   /// Throws a CreateException if the factory is not able to create the component.
   ///
   /// See [findFactory]
-  dynamic create(locator, IFactory factory) {
+  dynamic create(locator, IFactory? factory) {
     if (factory == null) return null;
 
     try {
@@ -63,7 +63,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
   /// - [locator]   a component locator to clarify.
   /// - [factory]   a factory that shall create the component.
   /// Returns clarified component descriptor (locator)
-  dynamic clarifyLocator(locator, IFactory factory) {
+  dynamic clarifyLocator(locator, IFactory? factory) {
     if (factory == null) return locator;
     if (!(locator is Descriptor)) return locator;
 
@@ -71,8 +71,8 @@ class BuildReferencesDecorator extends ReferencesDecorator {
     if (anotherLocator == null) return locator;
     if (!(anotherLocator is Descriptor)) return locator;
 
-    Descriptor descriptor = locator;
-    Descriptor anotherDescriptor = anotherLocator;
+    var descriptor = locator;
+    var anotherDescriptor = anotherLocator;
 
     return Descriptor(
         descriptor.getGroup() ?? anotherDescriptor.getGroup(),
@@ -100,7 +100,7 @@ class BuildReferencesDecorator extends ReferencesDecorator {
       if (component != null) {
         try {
           locator = clarifyLocator(locator, factory);
-          topReferences.put(locator, component);
+          topReferences!.put(locator, component);
           components.add(component);
         } catch (ex) {
           // Ignore exception

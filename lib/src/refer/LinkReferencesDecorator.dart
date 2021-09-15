@@ -30,11 +30,13 @@ class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
   /// Return 			Future that receives null no errors occured.
   /// Throws error
   @override
-  Future open(String correlationId) async {
+  Future open(String? correlationId) async {
     if (!_opened) {
       _opened = true;
       var components = getAll();
-      Referencer.setReferences(topReferences, components);
+      if (topReferences != null) {
+        Referencer.setReferences(topReferences!, components);
+      }
     }
   }
 
@@ -44,7 +46,7 @@ class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
   /// Return 			Future that receives null no errors occured.
   /// Throws error
   @override
-  Future close(String correlationId) async {
+  Future close(String? correlationId) async {
     if (_opened) {
       _opened = false;
       var components = getAll();
@@ -60,8 +62,8 @@ class LinkReferencesDecorator extends ReferencesDecorator implements IOpenable {
   dynamic put(locator, component) {
     super.put(locator, component);
 
-    if (_opened) {
-      Referencer.setReferencesForOne(topReferences, component);
+    if (_opened && topReferences != null) {
+      Referencer.setReferencesForOne(topReferences!, component);
     }
   }
 

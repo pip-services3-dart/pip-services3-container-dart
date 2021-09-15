@@ -71,16 +71,16 @@ class Container
     implements IConfigurable, IReferenceable, IUnreferenceable, IOpenable {
   ILogger logger = NullLogger();
   DefaultContainerFactory factories = DefaultContainerFactory([]);
-  ContextInfo info;
-  ContainerConfig config;
-  ContainerReferences references;
+  ContextInfo? info;
+  ContainerConfig? config;
+  ContainerReferences? references;
 
   /// Creates a new instance of the container.
   ///
   /// - [name]          (optional) a container name (accessible via ContextInfo)
   /// - [description]   (optional) a container description (accessible via ContextInfo)
 
-  Container([String name, String description]) {
+  Container([String? name, String? description]) {
     // Override in child classes
     info = ContextInfo(name, description);
   }
@@ -100,8 +100,8 @@ class Container
   /// - [path]              a path to configuration file
   /// - [parameters]        values to parameters the configuration or null to skip parameterization.
 
-  void readConfigFromFile(
-      String correlationId, String path, ConfigParams parameters) async {
+  Future readConfigFromFile(
+      String? correlationId, String path, ConfigParams parameters) async {
     config = await ContainerConfigReader.readFromFile(
         correlationId, path, parameters);
     logger.trace(correlationId, config.toString());
@@ -160,7 +160,7 @@ class Container
   /// Throws error
 
   @override
-  Future open(String correlationId) async {
+  Future open(String? correlationId) async {
     if (references != null) {
       var err = InvalidStateException(
           correlationId, 'ALREADY_OPENED', 'Container was already opened');
@@ -172,26 +172,27 @@ class Container
 
       // Create references with configured components
       references = ContainerReferences([]);
-      _initReferences(references);
-      references.putFromConfig(config);
-      setReferences(references);
+      _initReferences(references!);
+      if (config != null) references!.putFromConfig(config!);
+      setReferences(references!);
 
       // Get custom description if available
       var infoDescriptor = Descriptor('*', 'context-info', '*', '*', '*');
-      info = references.getOneOptional<ContextInfo>(infoDescriptor);
+      info = references!.getOneOptional<ContextInfo>(infoDescriptor);
       try {
-        await references.open(correlationId);
+        await references!.open(correlationId);
 
         // Get reference to logger
         logger = CompositeLogger(references);
-        logger.info(correlationId, 'Container %s started.', [info.name]);
+        logger.info(correlationId, 'Container %s started.', [info?.name]);
         return null;
       } catch (err) {
-        logger.fatal(correlationId, err, 'Failed to start container');
+        logger.fatal(
+            correlationId, err as Exception, 'Failed to start container');
         await close(correlationId);
       }
     } catch (ex) {
-      logger.fatal(correlationId, ex, 'Failed to start container');
+      logger.fatal(correlationId, ex as Exception, 'Failed to start container');
 
       await close(correlationId);
     }
@@ -204,28 +205,28 @@ class Container
   /// Throws
 
   @override
-  Future close(String correlationId) async {
+  Future close(String? correlationId) async {
     // Skip if container wasn't opened
     if (references == null) {
       return null;
     }
 
     try {
-      logger.trace(correlationId, 'Stopping %s container', [info.name]);
+      logger.trace(correlationId, 'Stopping %s container', [info?.name]);
 
       // Unset references for child container
       unsetReferences();
 
       // Close and dereference components
       try {
-        await references.close(correlationId);
+        await references!.close(correlationId);
       } catch (err) {
         references = null;
-        logger.info(correlationId, 'Container %s stopped', [info.name]);
+        logger.info(correlationId, 'Container %s stopped', [info?.name]);
         return null;
       }
     } catch (ex) {
-      logger.error(correlationId, ex, 'Failed to stop container');
+      logger.error(correlationId, ex as Exception, 'Failed to stop container');
       rethrow;
     }
   }

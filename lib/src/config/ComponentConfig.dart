@@ -16,15 +16,15 @@ class ComponentConfig {
   /// - [type]          (optional) a components type descriptor.
   /// - [config]        (optional) component configuration parameters.
   ComponentConfig(
-      [Descriptor descriptor, TypeDescriptor type, ConfigParams config]) {
+      [Descriptor? descriptor, TypeDescriptor? type, ConfigParams? config]) {
     this.descriptor = descriptor;
     this.type = type;
     this.config = config;
   }
 
-  Descriptor descriptor;
-  TypeDescriptor type;
-  ConfigParams config;
+  Descriptor? descriptor;
+  TypeDescriptor? type;
+  ConfigParams? config;
 
   /// Creates a new instance of ComponentConfig based on
   /// section from container configuration.

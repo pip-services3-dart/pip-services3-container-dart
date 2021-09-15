@@ -40,7 +40,7 @@ void main() {
       var config = ConfigParams.fromTuples([]);
       try {
         componentConfig = ComponentConfig.fromConfig(config);
-      } catch (ex) {
+      } on ApplicationException catch (ex) {
         expect(
             ex.message, 'Component configuration must have descriptor or type');
       }
@@ -60,7 +60,7 @@ void main() {
       ]);
       try {
         componentConfig = ComponentConfig.fromConfig(config);
-      } catch (ex) {
+      } on ApplicationException catch (ex) {
         expect(ex.message, 'Descriptor descriptor_name is in wrong format');
       }
     });
@@ -83,7 +83,7 @@ void main() {
       componentConfig = ComponentConfig.fromConfig(config);
 
       expect(componentConfig.descriptor, descriptor); //deepEqual
-      expect(componentConfig.type.equals(type), isTrue); //deepEqual
+      expect(componentConfig.type!.equals(type), isTrue); //deepEqual
     });
   });
 }

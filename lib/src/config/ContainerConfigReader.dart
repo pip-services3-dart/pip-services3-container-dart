@@ -14,7 +14,7 @@ class ContainerConfigReader {
   /// - [parameters]        values to parameters the configuration or null to skip parameterization.
   /// Returns the read container configuration
   static Future<ContainerConfig> readFromFile(
-      String correlationId, String path, ConfigParams parameters) async {
+      String? correlationId, String? path, ConfigParams parameters) async {
     if (path == null) {
       throw ConfigException(
           correlationId, 'NO_PATH', 'Missing config file path');
@@ -44,9 +44,8 @@ class ContainerConfigReader {
   /// - [parameters]        values to parameters the configuration or null to skip parameterization.
   /// Returns the read container configuration
   static Future<ContainerConfig> readFromJsonFile(
-      String correlationId, String path, ConfigParams parameters) async {
-    var config =
-        await JsonConfigReader.readConfig_(correlationId, path, parameters);
+      String? correlationId, String path, ConfigParams parameters) async {
+    var config = JsonConfigReader.readConfig_(correlationId, path, parameters);
     return ContainerConfig.fromConfig(config);
   }
 
@@ -57,9 +56,8 @@ class ContainerConfigReader {
   /// - [parameters]        values to parameters the configuration or null to skip parameterization.
   /// Returns the read container configuration
   static Future<ContainerConfig> readFromYamlFile(
-      String correlationId, String path, ConfigParams parameters) async {
-    var config =
-        await YamlConfigReader.readConfig_(correlationId, path, parameters);
+      String? correlationId, String path, ConfigParams parameters) async {
+    var config = YamlConfigReader.readConfig_(correlationId, path, parameters);
     return ContainerConfig.fromConfig(config);
   }
 }

@@ -4,7 +4,7 @@ import 'package:pip_services3_components/pip_services3_components.dart';
 
 class DummyController
     implements IReferenceable, IReconfigurable, IOpenable, INotifiable {
-  FixedRateTimer _timer;
+  late FixedRateTimer _timer;
   final _logger = CompositeLogger();
   var _message = 'Hello World!';
   var _counter = 0;
@@ -45,30 +45,32 @@ class DummyController
   }
 
   @override
-  Future open(String correlationId) async {
+  Future open(String? correlationId) async {
     try {
       _timer.start();
       _logger.trace(correlationId, 'Dummy controller opened');
     } catch (ex) {
-      _logger.error(correlationId, ex, 'Failed to open Dummy container');
+      _logger.error(
+          correlationId, ex as Exception, 'Failed to open Dummy container');
 
       rethrow;
     }
   }
 
   @override
-  Future close(String correlationId) async {
+  Future close(String? correlationId) async {
     try {
       _timer.stop();
       _logger.trace(correlationId, 'Dummy controller closed');
     } catch (ex) {
-      _logger.error(correlationId, ex, 'Failed to close Dummy container');
+      _logger.error(
+          correlationId, ex as Exception, 'Failed to close Dummy container');
       rethrow;
     }
   }
 
   @override
-  void notify(String correlationId, Parameters args) {
+  void notify(String? correlationId, Parameters args) {
     _logger.info(correlationId, '%d - %s', [counter++, message]);
   }
 }

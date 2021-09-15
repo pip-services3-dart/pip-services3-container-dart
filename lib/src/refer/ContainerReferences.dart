@@ -29,7 +29,7 @@ class ContainerReferences extends ManagedReferences {
         if (componentConfig.type != null) {
           locator = componentConfig.type;
           component = TypeReflector.createInstanceByDescriptor(
-              componentConfig.type, []);
+              componentConfig.type!, []);
           // Or create component statically
         } else if (componentConfig.descriptor != null) {
           locator = componentConfig.descriptor;
@@ -54,8 +54,8 @@ class ContainerReferences extends ManagedReferences {
         if (component is IConfigurable) {
           //component.configure != null
           // Configure component
-          var configurable = component as IConfigurable;
-          configurable.configure(componentConfig.config);
+          var configurable = component;
+          configurable.configure(componentConfig.config!);
         }
 
         // Set references to factories

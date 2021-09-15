@@ -1,15 +1,15 @@
 name: pip_services3_container
-version: 1.0.3
+version: 1.1.0
 author: Sergey Seroukhov <seroukhov@gmail.com>
 description: It provides an inversion-of-control component container to facilitate the development of composable services and applications.
 homepage: https://github.com/pip-services3-dart/pip-services3-container-dart
 
 environment:
-  sdk: ">=2.0.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  pip_services3_commons: ">=1.0.3 <2.0.0"
-  pip_services3_components: ">=1.0.2 <2.0.0"
+  pip_services3_commons: ^1.1.1
+  pip_services3_components: ^1.1.0
 
 dev_dependencies:
-  test: '>=1.14.2 <2.0.0'
+  test: ^1.17.12

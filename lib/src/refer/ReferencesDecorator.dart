@@ -11,16 +11,16 @@ class ReferencesDecorator implements IReferences {
   /// - nextReferences 		the next references or decorator in the chain.
   /// - topReferences 		the decorator at the top of the chain.
 
-  ReferencesDecorator(IReferences nextReferences, IReferences topReferences) {
+  ReferencesDecorator(IReferences? nextReferences, IReferences? topReferences) {
     this.nextReferences = nextReferences ?? topReferences;
     this.topReferences = topReferences ?? nextReferences;
   }
 
   /// The next references or decorator in the chain.
-  IReferences nextReferences;
+  IReferences? nextReferences;
 
   /// The decorator at the top of the chain.
-  IReferences topReferences;
+  IReferences? topReferences;
 
   /// Puts a new reference into this reference map.
   ///
@@ -28,7 +28,7 @@ class ReferencesDecorator implements IReferences {
   /// - [component] a component reference to be added.
   @override
   dynamic put(locator, component) {
-    return nextReferences.put(locator, component);
+    return nextReferences?.put(locator, component);
   }
 
   /// Removes a previously added reference that matches specified locator.
@@ -42,7 +42,7 @@ class ReferencesDecorator implements IReferences {
 
   @override
   dynamic remove(locator) {
-    return nextReferences.remove(locator);
+    return nextReferences?.remove(locator);
   }
 
   /// Removes all component references that match the specified locator.
@@ -52,7 +52,7 @@ class ReferencesDecorator implements IReferences {
 
   @override
   List removeAll(locator) {
-    return nextReferences.removeAll(locator);
+    return nextReferences != null ? nextReferences!.removeAll(locator) : [];
   }
 
   /// Gets locators for all registered component references in this reference map.
@@ -60,7 +60,7 @@ class ReferencesDecorator implements IReferences {
   /// Returns a list with component locators.
   @override
   List getAllLocators() {
-    return nextReferences.getAllLocators();
+    return nextReferences != null ? nextReferences!.getAllLocators() : [];
   }
 
   /// Gets all component references registered in this reference map.
@@ -68,7 +68,7 @@ class ReferencesDecorator implements IReferences {
   /// Returns a list with component references.
   @override
   List getAll() {
-    return nextReferences.getAll();
+    return nextReferences != null ? nextReferences!.getAll() : [];
   }
 
   /// Gets an optional component reference that matches specified locator.
@@ -77,7 +77,7 @@ class ReferencesDecorator implements IReferences {
   /// Returns a matching component reference or null if nothing was found.
 
   @override
-  T getOneOptional<T>(locator) {
+  T? getOneOptional<T>(locator) {
     try {
       var components = find<T>(locator, false);
       return components.isNotEmpty ? components[0] : null;
@@ -94,7 +94,8 @@ class ReferencesDecorator implements IReferences {
   @override
   T getOneRequired<T>(locator) {
     var components = find<T>(locator, true);
-    return components.isNotEmpty ? components[0] : null;
+    if (components.isNotEmpty) return components[0];
+    throw ReferenceException(null, locator);
   }
 
   /// Gets all component references that match specified locator.
@@ -132,6 +133,6 @@ class ReferencesDecorator implements IReferences {
   /// Throws a [ReferenceException] when required is set to true but no references found.
   @override
   List<T> find<T>(locator, bool required) {
-    return nextReferences.find<T>(locator, required);
+    return nextReferences?.find<T>(locator, required) ?? [];
   }
 }

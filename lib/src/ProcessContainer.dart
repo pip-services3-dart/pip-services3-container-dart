@@ -31,7 +31,7 @@ class ProcessContainer extends Container {
   /// - name          (optional) a container name (accessible via ContextInfo)
   /// - description   (optional) a container description (accessible via ContextInfo)
 
-  ProcessContainer([String name, String description])
+  ProcessContainer([String? name, String? description])
       : super(name, description) {
     logger = ConsoleLogger();
   }
@@ -91,7 +91,7 @@ class ProcessContainer extends Container {
     print('run [-h] [-c <config file>] [-p <param>=<value>]*');
   }
 
-  void _captureExit(String correlationId) async {
+  void _captureExit(String? correlationId) async {
     logger.info(correlationId, 'Press Control-C to stop the microservice...');
 
     // Activate graceful exit
@@ -129,7 +129,7 @@ class ProcessContainer extends Container {
       return;
     }
 
-    var correlationId = info.name;
+    var correlationId = info?.name;
     try {
       var path = _getConfigPath(args);
       var parameters = _getParameters(args);

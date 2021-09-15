@@ -15,3 +15,7 @@
 ## 1.0.3
 
 - Exclude listener on SigQuit from ProcessContainer
+
+## 1.1.0
+
+- Added null-safety

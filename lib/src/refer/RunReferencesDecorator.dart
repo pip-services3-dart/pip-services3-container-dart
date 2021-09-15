@@ -31,7 +31,7 @@ class RunReferencesDecorator extends ReferencesDecorator implements IOpenable {
   /// Return 			Future that receives null no errors occured.
   /// Throws error
   @override
-  Future open(String correlationId) async {
+  Future open(String? correlationId) async {
     if (!opened) {
       var components = getAll();
       await Opener.open(correlationId, components);
@@ -46,7 +46,7 @@ class RunReferencesDecorator extends ReferencesDecorator implements IOpenable {
   /// Return 			Future that receives null no errors occured.
   /// Throws error
   @override
-  Future close(String correlationId) async {
+  Future close(String? correlationId) async {
     if (opened) {
       var components = getAll();
       await Closer.close(correlationId, components);

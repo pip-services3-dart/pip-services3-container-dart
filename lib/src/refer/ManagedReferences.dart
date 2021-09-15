@@ -19,10 +19,10 @@ import './RunReferencesDecorator.dart';
 /// See [References](https://pub.dev/documentation/pip_services3_commons/latest/pip_services3_commons/References-class.html) (in the PipServices "Commons" package)
 
 class ManagedReferences extends ReferencesDecorator implements IOpenable {
-  References references;
-  BuildReferencesDecorator builder;
-  LinkReferencesDecorator linker;
-  RunReferencesDecorator runner;
+  late References references;
+  late BuildReferencesDecorator builder;
+  late LinkReferencesDecorator linker;
+  late RunReferencesDecorator runner;
 
   /// Creates a new instance of the references
   ///
@@ -51,7 +51,7 @@ class ManagedReferences extends ReferencesDecorator implements IOpenable {
   /// Return  			Future that receives error or null no errors occured.
   // Throws error
   @override
-  Future open(String correlationId) async {
+  Future open(String? correlationId) async {
     await linker.open(correlationId);
     await runner.open(correlationId);
     return null;
@@ -63,7 +63,7 @@ class ManagedReferences extends ReferencesDecorator implements IOpenable {
   /// Return  			Future that receives null no errors occured.
   /// Throws error
   @override
-  Future close(String correlationId) async {
+  Future close(String? correlationId) async {
     await runner.close(correlationId);
     return linker.close(correlationId);
   }
