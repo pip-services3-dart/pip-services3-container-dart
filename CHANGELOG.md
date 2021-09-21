@@ -19,3 +19,7 @@
 ## 1.1.0
 
 - Added null-safety
+
+## 1.1.1
+
+- Changed dependencies, update **ConfigReader** dependency
