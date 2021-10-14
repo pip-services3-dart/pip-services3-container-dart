@@ -45,10 +45,10 @@ import 'package:pip_services3_commons/src/refer/Descriptor.dart';
 
 class MyFactory extends Factory {
   static final MyComponentDescriptor =
-      Descritor("myservice", "mycomponent", "default", "*", "1.0");
+      Descriptor('myservice', 'mycomponent', 'default', '*', '1.0');
 
   MyFactory() : super() {
-    this.registerAsType(MyFactory.MyComponentDescriptor, MyComponent);
+    registerAsType(MyFactory.MyComponentDescriptor, MyComponent);
   }
 }
 
@@ -62,10 +62,9 @@ import 'package:pip_services3_container/src/ProcessContainer.dart';
 import 'package:pip_services3_rpc/src/build/DefaultRpcFactory.dart';
 
 class MyProcess extends ProcessContainer {
-  MyProcess():super('myservice', 'My service running as a process') {
-    
-    this._factories.add(DefaultRpcFactory());
-    this._factories.add(MyFactory());
+  MyProcess() : super('myservice', 'My service running as a process') {
+    factories.add(DefaultRpcFactory());
+    factories.add(MyFactory());
   }
 }
 ```
@@ -117,7 +116,7 @@ To instantiate and run the container we need a simple process launcher.
 void main(List<String> args) {
   try {
     var proc = MyProcess();
-    proc.configPath = "./config/config.yml";
+    proc.configPath = './config/config.yml';
     proc.run(args);
   } catch (ex) {
     print(ex);
