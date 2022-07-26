@@ -23,3 +23,7 @@
 ## 1.1.1
 
 - Changed dependencies, update **ConfigReader** dependency
+
+## 1.1.2
+
+- Added tracers factory

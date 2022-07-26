@@ -24,6 +24,7 @@ class DefaultContainerFactory extends CompositeFactory {
     add(DefaultInfoFactory());
     add(DefaultLoggerFactory());
     add(DefaultCountersFactory());
+    add(DefaultTracerFactory());
     add(DefaultConfigReaderFactory());
     add(DefaultCacheFactory());
     add(DefaultCredentialStoreFactory());

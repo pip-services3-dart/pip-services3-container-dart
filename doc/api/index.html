@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 2.0.0">
+  <meta name="generator" content="made with love by dartdoc 4.1.0">
   <meta name="description" content="pip_services3_container API docs, for the Dart programming language.">
   <title>pip_services3_container - Dart API docs</title>
 
@@ -81,10 +81,10 @@ import 'package:pip_services3_commons/src/refer/Descriptor.dart';
 
 class MyFactory extends Factory {
   static final MyComponentDescriptor =
-      Descritor("myservice", "mycomponent", "default", "*", "1.0");
+      Descriptor('myservice', 'mycomponent', 'default', '*', '1.0');
 
   MyFactory() : super() {
-    this.registerAsType(MyFactory.MyComponentDescriptor, MyComponent);
+    registerAsType(MyFactory.MyComponentDescriptor, MyComponent);
   }
 }
 
@@ -95,10 +95,9 @@ modules if you plan to include external components into your container.</p>
 import 'package:pip_services3_rpc/src/build/DefaultRpcFactory.dart';
 
 class MyProcess extends ProcessContainer {
-  MyProcess():super('myservice', 'My service running as a process') {
-    
-    this._factories.add(DefaultRpcFactory());
-    this._factories.add(MyFactory());
+  MyProcess() : super('myservice', 'My service running as a process') {
+    factories.add(DefaultRpcFactory());
+    factories.add(MyFactory());
   }
 }
 </code></pre>
@@ -144,7 +143,7 @@ Support for environment variables works well in docker or other containers like 
 <pre class="language-dart"><code class="language-dart">void main(List&lt;String&gt; args) {
   try {
     var proc = MyProcess();
-    proc.configPath = "./config/config.yml";
+    proc.configPath = './config/config.yml';
     proc.run(args);
   } catch (ex) {
     print(ex);
@@ -234,7 +233,7 @@ and controls their lifecycle(*) using various configurations. <a href="pip_servi
 <footer>
   <span class="no-break">
     pip_services3_container
-      1.1.1
+      1.1.2
   </span>
 
   
